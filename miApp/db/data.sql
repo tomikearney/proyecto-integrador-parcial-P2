@@ -1,0 +1,39 @@
+CREATE DATABASE IF NOT EXISTS data_bases;
+USE data_bases;
+
+CREATE TABLE usuarios (
+	id 			INT 				UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    email 		VARCHAR (60)		UNIQUE NOT NULL,
+    clave 		VARCHAR (200)		NOT NULL,
+    fotoPerfil  VARCHAR (200)		NULL, 
+    dni 		INT					UNIQUE NOT NULL,
+    createdAt 	TIMESTAMP 			DEFAULT CURRENT_TIMESTAMP,
+	updatedAt 	TIMESTAMP 			DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deletedAt 	TIMESTAMP 			NULL 
+);
+
+CREATE TABLE posteos (
+	id 					INT 				UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nombreImg 			VARCHAR (100)		NOT NULL, 
+    descripcionImg 		TEXT				NOT NULL,
+    idUsuario			INT					UNSIGNED,
+    createdAt 			TIMESTAMP 			DEFAULT CURRENT_TIMESTAMP,
+	updatedAt 			TIMESTAMP 			DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deletedAt 			TIMESTAMP 			NULL,
+    
+	FOREIGN KEY (idUsuario) REFERENCES usuarios (id)
+
+);
+
+CREATE TABLE comentarios (
+	id 					INT 				UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	idPosteo			INT					UNSIGNED,
+    idUsuario			INT					UNSIGNED,
+	comentario 			TEXT				NOT NULL,
+    createdAt 			TIMESTAMP 			DEFAULT CURRENT_TIMESTAMP,
+	updatedAt 			TIMESTAMP 			DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deletedAt 			TIMESTAMP 			NULL, 
+	FOREIGN KEY (idPosteo) REFERENCES posteos (id),	
+	FOREIGN KEY (idUsuario) REFERENCES usuarios (id)	
+
+);	
