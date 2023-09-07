@@ -4,10 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+/*Importamos modulos de ruteo propios */
 var indexRouter = require('./routes/index');
-var postRouter = require('./routes/post');
+var postRouter = require('./routes/posts');
 var usuarioRouter = require("./routes/usuarios")
 
+/*Funcion de alto nivel */
 var app = express();
 
 // view engine setup
@@ -18,10 +20,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//Recursos Estaticos:  guardados en la carpeta public
 app.use(express.static(path.join(__dirname, 'public')));
 
+/*PREFIJOS */
 app.use('/', indexRouter);
-app.use('/post', postRouter);
+app.use('/posts', postRouter); /*CAMBIE A POSTS CON S */
 app.use("/usuario", usuarioRouter);
 
 // catch 404 and forward to error handler
@@ -40,4 +45,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+/*EXPORTAMOS */
 module.exports = app;
