@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const usuarioContoller= require("../controller/usuarioControlador")
 
-router.get("/miPerfil",function(req,res){
-    res.render('miPerfil', { title: 'Express' });
-  
-  });
+
+router.get("/miPerfil",usuarioContoller.miPerfil);
 
 module.exports = router
