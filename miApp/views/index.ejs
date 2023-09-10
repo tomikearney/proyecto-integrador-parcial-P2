@@ -19,7 +19,7 @@
                     </h4>
                 </div>
                 <div class="post-body">
-                    <a href="detallePost.html">
+                    <a href="posts/detallePost/id/<%=listaPosteos[i].id%>">
                         <img src="https://via.placeholder.com/500x600" alt="">
                     </a>
                 </div>
@@ -36,10 +36,11 @@
                     <ul>
                       <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos -->
                     <% for( let index = 0; index < listaPosteos[i].comentarios.length; index++ ) { %>
-                      <li><a href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaUsuarios[index].email%></a>
-                        <span><%= listaPosteos[i].comentarios[index].comentario %></span>
+                        <li><a href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaUsuarios[index].email%></a>
+                            <span><%= listaPosteos[i].comentarios[index].comentario %></span>
+                        </li>
                       <% } %>
-                      <a href="detallePost.html">Ver más...</a>
+                      <a href="/posts/detallePost/id/<%=listaPosteos[i].id%>">Ver más...</a> 
                     </ul>
                 </div>
             </article>
