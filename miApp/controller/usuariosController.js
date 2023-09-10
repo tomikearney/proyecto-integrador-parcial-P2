@@ -1,23 +1,30 @@
-const db = require ("../db/data")
+const data = require ("../db/data")
 
 const usuariosController ={
    miPerfil: function (req, res) {
-    
-    for (let i = 0; i < usuario.usuario.length; i++) {
-            arrayUsuario =[]
-            if(usuario.usuario[i].id == "1")
-            arrayUsuario.push(usuario.usuario[i])
+    let ingresoId = req.params.id; //recupero el id que se le manda por la ruta, para luego dependiendo de este mostrar un perfil
+    let arrayUsuarioPerfil=[];
 
-    
-     }
+    for (let i = 0; i < data.usuario.length; i++) {
+            if(ingresoId == data.usuario.id){
+              arrayUsuarioPerfil.push(data.usuario[i]); 
+            }
+    }
 
-    return res.render("miPerfil", {listaUsuario: arrayUsuario, title: "express", })
-}
-,
+    if (!arrayUsuarioPerfil){
+      return res.render("registracion", {title:"¡No encontramos el perfil! Por favor,registrate"});
+    }
+
+    return res.render("miPerfil", {listaUsuario: arrayUsuarioPerfil})
+    // return res.render('miPerfil', { title: "Express"});
+  },
+
   editarPerfil : function(req, res, next) {
+    
     res.render('editarPerfil', { title: 'Express' });
   },
   detalleUsuario :function(req, res, next) {
+    //validar id cuando se ingrese y ver si es igual entonces se muestra detalle del usuario que se ingrese
     res.render('detalleUsuario', { title: 'Express' });
   },
 
@@ -30,7 +37,7 @@ const usuariosController ={
   
   }
 
-}
+};
 module.exports = usuariosController;
   
   

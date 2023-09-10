@@ -8,10 +8,10 @@ var router = express.Router();
 /* GET users listing. */
 
 router.get("/",postsController.indexPosts);
+/*se agregaria un post cuando se ingrese un id de un usuario indicado, y tambien tenermos que validar de que pasaria cunado no este el id */
+router.get("/agregarPost/id/:id",postsController.agregarPost);/*?? */
 
-router.get("/agregarPost",postsController.agregarPost);
-
-router.get("/detallePost",postsController.detallePost);
+router.get("/detallePost/id/:id",postsController.detallePost);
 
 
 module.exports = router;

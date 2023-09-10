@@ -7,7 +7,7 @@ var logger = require('morgan');
 /*Importamos modulos de ruteo propios */
 var indexRouter = require('./routes/index');
 var postRouter = require('./routes/posts');
-var usuarioRouter = require("./routes/usuarios")
+var usuarioRouter = require('./routes/users')
 
 /*Funcion de alto nivel */
 var app = express();
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /*PREFIJOS */
 app.use('/', indexRouter);
 app.use('/posts', postRouter); /*CAMBIE A POSTS CON S */
-app.use("/usuario", usuarioRouter);
+app.use('/users', usuarioRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

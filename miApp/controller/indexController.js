@@ -1,9 +1,10 @@
-const db = require("../db/data")
+const data = require("../db/data")
 
 const indexController ={
     index :function(req, res, next) {
-        res.render('index', { title: 'Express' });
-      },
+      let id = req.params.id
+      res.render('index', {idUsuarios:id, listaUsuarios: data.usuario, listaPosteos:data.posteos, title: 'Express' });
+    },
 }
 
 module.exports = indexController;

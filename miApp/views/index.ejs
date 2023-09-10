@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <%- include('./partials/head') %>
+  <%- include('./partials/head') %>
+
 <body>
-    <%- include('./partials/header') %>
+  <%- include('./partials/header') %>
 
     <main>
         <section class="center main-content">
-            <article class="post">
+            <% for( let i = 0; i < listaUsuarios.length; i++ ) { %>
+              <article class="post">
                 <div class="info-usuario ">
-                    <img src="https://via.placeholder.com/40" alt="">
+                  <!--ENLACE PARA MOSTRAR PERFIL-->
+                  <img src="<%= listaUsuarios[i].fotoPerfil %>" alt="">
+
                     <h4>
-                        <a href="detalleUsuario.html">Usuario</a>
+                      <a href="/usuarios/detalleUsuario/id/<%= listaUsuarios[i].id %>"><%= listaUsuarios[i].email %></a>
                     </h4>
                 </div>
                 <div class="post-body">
@@ -28,129 +32,25 @@
                     </li>
                 </ul>
                 <div class="post-comentarios">
-                    <h4>Comentarios</h4>
+                   <h4>Comentarios</h4>
                     <ul>
-                        <li>
-                            <a href="detalleUsuario.html">Usuario</a>
-                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi</span>
-                        </li>
-                        <li>
-                            <a href="detalleUsuario.html">Usuario</a>
-                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi</span>
-                        </li>
-                        <a href="detallePost.html">Ver más...</a>
+                      <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos -->
+                    <% for( let index = 0; index < listaPosteos[i].comentarios.length; index++ ) { %>
+                      <li><a href="/usuarios/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaUsuarios[index].email%></a>
+                        <span><%= listaPosteos[i].comentarios[index].comentario %></span>
+                      <% } %>
+                      <a href="detallePost.html">Ver más...</a>
                     </ul>
                 </div>
             </article>
-            <article class="post">
-                <div class="info-usuario ">
-                    <img src="https://via.placeholder.com/40" alt="">
-                    <h4>
-                        <a href="detalleUsuario.html">Usuario</a>
-                    </h4>
-                </div>
-                <div class="post-body">
-                    <a href="detallePost.html">
-                        <img src="https://via.placeholder.com/500x600" alt="">
-                    </a>
-                </div>
-                <ul class="post-reacciones">
-                    <li>
-                        <i class="fa-regular fa-heart"></i>
-                    </li>
-                    <li>
-                        <i class="fa-regular fa-comment"></i>
-                    </li>
-                </ul>
-                <div class="post-comentarios">
-                    <h4>Comentarios</h4>
-                    <ul>
-                        <li>
-                            <a href="detalleUsuario.html">Usuario</a>
-                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi</span>
-                        </li>
-                        <li>
-                            <a href="detalleUsuario.html">Usuario</a>
-                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi</span>
-                        </li>
-                        <a href="detallePost.html">Ver más...</a>
-                    </ul>
-                </div>
-            </article>
-            <article class="post">
-                <div class="info-usuario ">
-                    <img src="https://via.placeholder.com/40" alt="">
-                    <h4>
-                        <a href="detalleUsuario.html">Usuario</a>
-                    </h4>
-                </div>
-                <div class="post-body">
-                    <a href="detallePost.html">
-                        <img src="https://via.placeholder.com/500x600" alt="">
-                    </a>
-                </div>
-                <ul class="post-reacciones">
-                    <li>
-                        <i class="fa-regular fa-heart"></i>
-                    </li>
-                    <li>
-                        <i class="fa-regular fa-comment"></i>
-                    </li>
-                </ul>
-                <div class="post-comentarios">
-                    <h4>Comentarios</h4>
-                    <ul>
-                        <li>
-                            <a href="detalleUsuario.html">Usuario</a>
-                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi</span>
-                        </li>
-                        <li>
-                            <a href="detalleUsuario.html">Usuario</a>
-                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi</span>
-                        </li>
-                        <a href="detallePost.html">Ver más...</a>
-                    </ul>
-                </div>
-            </article>
-            <article class="post">
-                <div class="info-usuario ">
-                    <img src="https://via.placeholder.com/40" alt="">
-                    <h4>
-                        <a href="detalleUsuario.html">Usuario</a>
-                    </h4>
-                </div>
-                <div class="post-body">
-                    <a href="detallePost.html">
-                        <img src="https://via.placeholder.com/500x600" alt="">
-                    </a>
-                </div>
-                <ul class="post-reacciones">
-                    <li>
-                        <i class="fa-regular fa-heart"></i>
-                    </li>
-                    <li>
-                        <i class="fa-regular fa-comment"></i>
-                    </li>
-                </ul>
-                <div class="post-comentarios">
-                    <h4>Comentarios</h4>
-                    <ul>
-                        <li>
-                            <a href="detalleUsuario.html">Usuario</a>
-                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi</span>
-                        </li>
-                        <li>
-                            <a href="detalleUsuario.html">Usuario</a>
-                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi</span>
-                        </li>
-                        <a href="detallePost.html">Ver más...</a>
-                    </ul>
-                </div>
-            </article>
+            <% } %>
+          
+           
         </section>    
     </main>
 
     <%- include('./partials/footer') %>
+
 
 </body>
 

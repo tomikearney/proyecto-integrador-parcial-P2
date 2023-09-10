@@ -1,8 +1,8 @@
-const db = require ("../db/data")
+const data = require ("../db/data")
 
 const postsController ={
     indexPosts : function(req,res){
-        res.render('index', { title: 'Express' }); // aca se deberian mostrar todos los postos cuando la ruta es /post
+        res.render('index', { title: 'Express' }); 
       },
   agregarPost :function(req,res){
     res.render('agregarPost', { title: 'Express' });
