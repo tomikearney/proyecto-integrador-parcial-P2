@@ -14,8 +14,8 @@
                   <!--ENLACE PARA MOSTRAR PERFIL-->
                   <img src="<%= listaUsuarios[i].fotoPerfil %>" alt="">
 
-                    <h4>
-                      <a href="/usuarios/detalleUsuario/id/<%= listaUsuarios[i].id %>"><%= listaUsuarios[i].email %></a>
+                    <h4> <!--Para cuando se toque el perfil del ususario en inicio se diriga al mismo-->
+                      <a href="/users/detalleUsuario/id/<%= listaUsuarios[i].id %>"><%= listaUsuarios[i].email %></a>
                     </h4>
                 </div>
                 <div class="post-body">
@@ -36,7 +36,7 @@
                     <ul>
                       <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos -->
                     <% for( let index = 0; index < listaPosteos[i].comentarios.length; index++ ) { %>
-                      <li><a href="/usuarios/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaUsuarios[index].email%></a>
+                      <li><a href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaUsuarios[index].email%></a>
                         <span><%= listaPosteos[i].comentarios[index].comentario %></span>
                       <% } %>
                       <a href="detallePost.html">Ver más...</a>
