@@ -1,21 +1,14 @@
-const data = require ("../db/data")
+const data = require("../db/data")
 
-const postsController ={
-  detallePost: function(req, res, next) { //validar id
-    const ingresoId = req.params.id;
-    let arrayAboutPosteos = []; //tendria que estar todo lo relacionado con el usuario
+const postsController = {
+  detallePost: function (req, res, next) { 
+    //se requiere el id del posteo correspondiente para dar los detalles correspondiente
+    const idPost = req.params.id;
+    res.render('detallePost', { idPosteo: idPost, listaUsuarios: data.usuario, listaPosteos: data.posteos })},
 
-      for (let i = 0; i < data.usuario.length; i++) {
-          if (ingresoId == data.posteos[i].id) {
-            arrayAboutPosteos.push(data.posteos[i])
-          }            
-      }
-
-    
-    res.render('detallePost', { listaPosteos: arrayAboutPosteos, title: 'Detalle posteo' });
-  },
-agregarPost: function(req, res, next) {
-    res.render('agregarPost', { title: 'Express' });
+ 
+  agregarPost: function (req, res, next) {
+    res.render('agregarPost', { title: 'New Post' });
   },
 
 };

@@ -56,24 +56,28 @@ const data = {
                 id: 1,
                 idPosteo: 1,
                 idUsuario: 1,
+                email: "fran@yahoo.com",
                 comentario: "¡Me encantan los 5!"
             },
             {
                 id: 2,
                 idPosteo: 1,
                 idUsuario: 2,
+                email: 'maria.kolek@example.com',
                 comentario: "Leí todos!! Son increibles"
             },
             {
                 id: 3,
                 idPosteo: 1,
                 idUsuario: 3,
+                email: 'oriana.cacs@example.com',
                 comentario: "Definitivamente, los tienen que leer"
             },
             {
                 id: 4,
                 idPosteo: 1,
                 idUsuario: 4,
+                email: 'tomas@example.com',
                 comentario: "Justo estaba buscando opciones de libros para leer"
             }]
         },
@@ -88,21 +92,21 @@ const data = {
                 id: 5,
                 idPosteo: 2,
                 idUsuario: 5,
-                usuario: "brian",
+                email: 'jorge@example.com',
                 comentario: "Cuál recomiendan?"
             },
             {
                 id: 6,
                 idPosteo: 2,
                 idUsuario: 1,
-                usuario: "brian",
+                email: "fran@yahoo.com",
                 comentario: "Menos mal que dije que iba ahorra ¡Imposible con las novedades!"
             },
             {
                 id: 7,
                 idPosteo: 2,
                 idUsuario: 2,
-                usuario: "luis",
+                email: 'maria.kolek@example.com',
                 comentario: "Estoy enamorado/a de las novedades del mes"
             }]
         },
@@ -117,18 +121,21 @@ const data = {
                 id: 9,
                 idPosteo: 3,
                 idUsuario: 4,
+                email: 'tomas@example.com',
                 comentario: "Justo buscaba uno para mi hijo ¡gracias!"
             },
             {
                 id: 10,
                 idPosteo: 3,
                 idUsuario: 5,
+                email: 'jorge@example.com',
                 comentario: "Para que edades son recomendables?"
             },
             {
                 id: 11,
                 idPosteo: 3,
                 idUsuario: 1,
+                email: "fran@yahoo.com",
                 comentario: "Los libros alimentan la saviduria y ayudan a ver el mundo de otra forma."
             },
             {
@@ -149,24 +156,28 @@ const data = {
                 id: 13,
                 idPosteo: 4,
                 idUsuario: 3,
+                email: 'oriana.cacs@example.com',
                 comentario: "¡Amo!"
             },
             {
                 id: 14,
                 idPosteo: 4,
                 idUsuario: 4,
+                email: 'tomas@example.com',
                 comentario: "Ya quiero las fechasss!!"
             },
             {
                 id: 15,
                 idPosteo: 4,
                 idUsuario: 5,
+                email: 'jorge@example.com',
                 comentario: "¿Cómo me inscribo?"
             },
             {
                 id: 16,
                 idPosteo: 4,
                 idUsuario: 1,
+                email: "fran@yahoo.com",
                 comentario: "Me apuntooo"
             }]
         },
@@ -181,24 +192,28 @@ const data = {
                 id: 17,
                 idPosteo: 5,
                 idUsuario: 2,
+                email: 'maria.kolek@example.com',
                 comentario: "Súper recomendable el libro de Maggie"
             },
             {
                 id: 18,
                 idPosteo: 5,
                 idUsuario: 3,
+                email: 'oriana.cacs@example.com',
                 comentario: "Son unos libros muy entretenidos"
             },
             {
                 id: 19,
                 idPosteo: 5,
                 idUsuario: 4,
+                email: 'tomas@example.com',
                 comentario: "Recomiendan libros de Fantasía ¡Pliss!"
             },
             {
                 id: 20,
                 idPosteo: 5,
                 idUsuario: 5,
+                email: 'jorge@example.com',
                 comentario: "Son increibless"
             }]
         },
@@ -213,24 +228,28 @@ const data = {
                 id: 21,
                 idPosteo: 6,
                 idUsuario: 1,
+                email: "fran@yahoo.com",
                 comentario: "Graicass por la recomendacion muchos lo esperabamos"
             },
             {
                 id: 22,
                 idPosteo: 6,
                 idUsuario: 2,
+                email: 'maria.kolek@example.com',
                 comentario: "Los quierooo!"
             },
             {
                 id: 23,
                 idPosteo: 6,
                 idUsuario: 3,
+                email: 'oriana.cacs@example.com',
                 comentario: "Son todo lo que esta bien!"
             },
             {
                 id: 24,
                 idPosteo: 6,
                 idUsuario: 4,
+                email: 'tomas@example.com',
                 comentario: "Lo mejor de las tardes es poder darse un tiempo para leer y beber algo"
             }]
         },
@@ -245,24 +264,28 @@ const data = {
                 id: 25,
                 idPosteo: 7,
                 idUsuario: 5,
+                email: 'jorge@example.com',
                 comentario: "Obviooo que siii"
             },
             {
                 id: 26,
                 idPosteo: 7,
                 idUsuario: 1,
+                email: "fran@yahoo.com",
                 comentario: "¡Que idea tan genial! Solo escucho música cuando leo algo simple, porque si es algo de la facultad requiero de concentración jajaj"
             },
             {
                 id: 27,
                 idPosteo: 7,
                 idUsuario: 2,
+                email: 'maria.kolek@example.com',
                 comentario: "¡Buena ideaaa! "
             },
             {
                 id: 28,
                 idPosteo: 7,
                 idUsuario: 3,
+                email: 'oriana.cacs@example.com',
                 comentario: "Muy pocas veces escucho música"
             }]
         },
@@ -277,24 +300,28 @@ const data = {
                 id: 29,
                 idPosteo: 8,
                 idUsuario: 4,
+                email: 'tomas@example.com',
                 comentario: "¡Gracias por los descuentos!!"
             },
             {
                 id: 30,
                 idPosteo: 8,
                 idUsuario: 5,
+                email: 'jorge@example.com',
                 comentario: "Es durante todo el mes?"
             },
             {
                 id: 31,
                 idPosteo: 8,
                 idUsuario: 1,
+                email: "fran@yahoo.com",
                 comentario: "Son genialess!"
             },
             {
                 id: 32,
                 idPosteo: 8,
                 idUsuario: 2,
+                email: 'maria.kolek@example.com',
                 comentario: "Justo cuando lo necesitaba!!"
             }]
         },
@@ -309,24 +336,28 @@ const data = {
                 id: 33,
                 idPosteo: 9,
                 idUsuario: 3,
+                email: 'oriana.cacs@example.com',
                 comentario: "El 5to libro es súper entretenido. Lo recomiendo!!"
             },
             {
                 id: 34,
                 idPosteo: 9,
                 idUsuario: 4,
+                email: 'tomas@example.com',
                 comentario: "Increíble los imperdibles!!"
             },
             {
                 id: 35,
                 idPosteo: 9,
                 idUsuario: 5,
+                email: 'jorge@example.com',
                 comentario: "¿Cuál me recomiendan para empezar a leer?"
             },
             {
                 id: 36,
                 idPosteo: 9,
                 idUsuario: 1,
+                email: "fran@yahoo.com",
                 comentario: "No me decido ¡Ayuda!"
             }]
         },
@@ -341,24 +372,28 @@ const data = {
                 id: 37,
                 idPosteo: 10,
                 idUsuario: 2,
+                email: 'maria.kolek@example.com',
                 comentario: "¡Son súper entretenidos!"
             },
             {
                 id: 38,
                 idPosteo: 10,
                 idUsuario: 3,
+                email: 'oriana.cacs@example.com',
                 comentario: "Los recomiendoo! "
             },
             {
                 id: 39,
                 idPosteo: 10,
                 idUsuario: 4,
+                email: 'tomas@example.com',
                 comentario: "Aún no los leí, pero es uno de mis pendientes!!"
             },
             {
                 id: 40,
                 idPosteo: 10,
                 idUsuario: 5,
+                email: 'jorge@example.com',
                 comentario: "¡Qué maravillosa saga! "
             }]
         },

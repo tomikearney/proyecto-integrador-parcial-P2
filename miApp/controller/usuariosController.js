@@ -1,14 +1,8 @@
 const data= require("../db/data");
 
 const usuariosController = {
-  login: function (req, res, next) {
-    res.render('login', { title: 'Express' });
-    },
-    registro: function (req, res, next) {
-        res.render('registracion', { title: 'Express' });
-    },
     miPerfil: function(req, res, next) {
-        res.render('miPerfil', { title: 'Express' });
+        res.render('miPerfil', { listaUsuarios: data.usuario, listaPosteos: data.posteos, title: 'Express' });
     },
     editarPerfil: function(req, res, next) {
         res.render('editarPerfil', { title: 'Express' });
