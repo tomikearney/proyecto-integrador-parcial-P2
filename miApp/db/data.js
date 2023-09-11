@@ -122,7 +122,17 @@ const data = {
                 nombre: "Maria Kolek",
                 fotoPerfil: "/img/maria.png",
                 comentario: "Estoy enamorado/a de las novedades del mes"
-            }]
+            },
+            {
+                id: 8,
+                idPosteo: 2,
+                idUsuario: 3,
+                nombre: "Oriana Benasconi",
+                fotoPerfil: "/img/oriana.png",
+                comentario: "¡Novedades infaltables!"
+
+            },
+        ]
         },
         {
             id: 3,

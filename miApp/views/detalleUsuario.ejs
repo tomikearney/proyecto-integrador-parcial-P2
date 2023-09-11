@@ -11,9 +11,9 @@
         <div class="user-detail container">
             <section class="top main-content">
                 <% for( let i = 0; i < listaAboutUsuario.length; i++ ) { %>
-                    <img class="profile" src="<%= listaAboutUsuario[i].fotoPerfil %>" alt="<%= listaAboutUsuario[i].email %>">
+                    <img class="profile" src="<%= listaAboutUsuario[i].fotoPerfil %>" alt="<%= listaAboutUsuario[i].nombre %>">
                     <div class="info-usuario">
-                        <p><%=listaAboutUsuario[i].email %></p> 
+                        <p><%=listaAboutUsuario[i].nombre %></p> 
                         <a class="follow" href="">seguir</a>
                         <ul class="meta"> <!--COMO HAGO PARA QUE CAMBIE-->
                             <li><%= listaPosteos.length %> posts</li>

@@ -15,7 +15,7 @@
                   <img src="<%= listaPosteos[i].fotoPerfil %>" alt="">
 
                     <h4> <!--Para cuando se toque el perfil del ususario en inicio se diriga al mismo-->
-                      <a href="/users/detalleUsuario/id/<%= listaPosteos[i].idUsuario %>"><%= listaPosteos[i].email %></a>
+                      <a href="/users/detalleUsuario/id/<%= listaPosteos[i].idUsuario %>"><%= listaPosteos[i].nombreUsuarioPost%></a>
                     </h4>
                 </div>
                 <div class="post-body">
@@ -32,10 +32,13 @@
                     </li>
                 </ul>
                 <div class="post-comentarios">
+                  <!--Descripcion del post-->
+                  <p><%= listaPosteos[i].nombreUsuario %> <%= listaPosteos[i].descripcionImg %></p>
+
                    <h4>Comentarios</h4>
                     <ul>
-                      <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos -->
-                    <% for( let index = 0; index < listaPosteos[i].comentarios.length; index++ ) { %>
+                      <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos. Solo se muestra 2 comentarios -->
+                    <% for( let index = 0; index < 2; index++ ) { %>
                         <li><a href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaPosteos[i].comentarios[index].nombre %></a> 
                             <span><%= listaPosteos[i].comentarios[index].comentario %></span>
                         </li>
