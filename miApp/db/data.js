@@ -26,6 +26,14 @@ const data = {
         dni :"39083649"
       },
       { 
+        id : 4 ,
+        email:'tomas@example.com',
+        clave: 'sTudyPass22',
+        fotoPerfil: "/img/tomas.png",
+        fecha: '19/09/2000',
+        dni :"47087649"
+      },
+      { 
         id : 5 ,
         email:'tomas@example.com',
         clave: 'sTudyPass22',
@@ -41,6 +49,8 @@ const data = {
         idUsuario: 1,
         nombreImg: "5 libros de ficción en inglés",
         descripcionImg:"Si estas comenzando a leer en inglés, a continuación te dejamos algunas opciones entretenidas",
+        email:"fran@yahoo.com",
+        fotoPerfil: "/img/fran.png",
         comentarios: [{
             id:1, 
             idPosteo: 1,
@@ -71,6 +81,8 @@ const data = {
         idUsuario: 1,
         nombreImg: "Novedad Septiembre",
         descripcionImg:"¡Los mejores libros ingresarón este mes! ¿Ya tenes el tuyo?",
+        email:"fran@yahoo.com",
+        fotoPerfil: "/img/fran.png",
         comentarios: [{
             id:5,  
             idPosteo: 2,
@@ -100,6 +112,8 @@ const data = {
         id:3,
         idUsuario: 2,
         nombreImg: "Infantiles",
+        email:'maria.kolek@example.com',
+        fotoPerfil: "/img/maria.png",
         descripcionImg:" En este mes se incorporarón NUEVOS libros para los pequeños gigantesss",
         comentarios: [{
             id:9,  
@@ -130,6 +144,8 @@ const data = {
         id:4,
         idUsuario: 2,
         nombreImg: "LecturaCooperativa",
+        email:'maria.kolek@example.com',
+        fotoPerfil: "/img/maria.png",
         descripcionImg:"En este espacio se podra seleccionar un libro que nos guste a todos y poder hacer una lectura compartida.¿Les gusta la idea? Proximamente subimos las fechas. ",
         comentarios: [{
             id:13,  
@@ -161,6 +177,8 @@ const data = {
         idUsuario: 3,
         nombreImg: "Recomendacion",
         descripcionImg:"En el día de hoy les venimos a recomendar 2 libros de Ficción. Por un lado De Ira y Amor de Sabaa Tahir y por el otro Valientemente de Maggie Stiefvater",
+        email:'oriana.cacs@example.com',
+        fotoPerfil: "/img/oriana.png",
         comentarios: [{
             id:17,  
             idPosteo: 5,
@@ -191,6 +209,8 @@ const data = {
         idUsuario: 3,
         nombreImg: "Recomendacion Fantasia",
         descripcionImg:"En el día de hoy les venimos a recomendar 2 libros de Fantasía. Por un lado El Asesinato del Señor Wickham de Claudia Gray y por el otro Una Magia Impregnada de Veneno de Judy l. Lin",
+        email:'oriana.cacs@example.com',
+        fotoPerfil: "/img/oriana.png",
         comentarios: [{
             id:21,  
             idPosteo: 6,
@@ -221,6 +241,8 @@ const data = {
         idUsuario: 4,
         nombreImg: "Cuestionamiento1",
         descripcionImg:"Ayudanos a armar una playlist conjunta. Pero antes queremos saber si ustedes leer con música. Dejanos tu respuesta en los comentarios!",
+        email:'tomas@example.com',
+        fotoPerfil: "/img/tomas.png",
         comentarios: [{
             id:25,  
             idPosteo: 7,
@@ -251,6 +273,8 @@ const data = {
         idUsuario: 4,
         nombreImg: "OffBooks",
         descripcionImg:"¡Septiembre es el mes perfecto para sumergirse en un buen libro en Winter Libros! Disfruta de un 10% de descuento en todos nuestros libros, además de envío GRATIS a tu sucursal más cercana en pedidos superiores a 14500.",
+        email:'tomas@example.com',
+        fotoPerfil: "/img/tomas.png",
         comentarios: [{
             id:29,  
             idPosteo: 8,
