@@ -35,11 +35,11 @@ const data = {
       },
       { 
         id : 5 ,
-        email:'tomas@example.com',
-        clave: 'sTudyPass22',
-        fotoPerfil: "/img/tomas.png",
-        fecha: '19/09/2000',
-        dni :"47087649"
+        email:'jorge@example.com',
+        clave: 'postPass22',
+        fotoPerfil: "/img/jorge.png",
+        fecha: '09/09/2000',
+        dni :"066798539"
       },
  
     ],
@@ -305,6 +305,8 @@ const data = {
         idUsuario: 5,
         nombreImg: "Imperdibles",
         descripcionImg:"5 Libros que no podés dejar pasar ¿Cuál agregarias?",
+        email:'jorge@example.com',
+        fotoPerfil: "/img/jorge.png",
         comentarios: [{
             id:33,  
             idPosteo: 9,
@@ -335,6 +337,8 @@ const data = {
         idUsuario: 5,
         nombreImg: "HarryPotter",
         descripcionImg:"Descuentos Especiales en todos los libros de la saga de Harry Potter ¿Leístes toda la saga? ¿Qué te parecio?",
+        email:'jorge@example.com',
+        fotoPerfil: "/img/jorge.png",
         comentarios: [{
             id:37,  
             idPosteo: 10,
