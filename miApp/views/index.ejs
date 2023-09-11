@@ -36,7 +36,7 @@
                     <ul>
                       <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos -->
                     <% for( let index = 0; index < listaPosteos[i].comentarios.length; index++ ) { %>
-                        <li><a href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaPosteos[index].email%></a> 
+                        <li><a href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaPosteos[i].comentarios[index].nombre %></a> 
                             <span><%= listaPosteos[i].comentarios[index].comentario %></span>
                         </li>
                       <% } %>

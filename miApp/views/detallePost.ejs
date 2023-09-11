@@ -13,7 +13,7 @@
                     <section class="center main-content post">
                         <div class="info-usuario">
                             <img class = "profile" src="<%= listaPosteos[i].fotoPerfil %>" alt=""> 
-                            <p><a href="/users/detalleUsuario/id/<%= listaPosteos[i].idUsuario%>"><%=listaPosteos[i].email%></a></p>
+                            <p><a href="/users/detalleUsuario/id/<%= listaPosteos[i].idUsuario%>"><%=listaPosteos[i].nombreUsuarioPost%></a></p>
                         </div>
                         <img class="photo" src="https://via.placeholder.com/500x600" alt="">
                     </section>
@@ -28,9 +28,9 @@
                             <div>
                                 <% for( let index=0; index < listaPosteos[i].comentarios.length; index++ ) { %>
                                     <article class="comment">
-                                        <img class= "profile" src="<%= listaPosteos[i].comentarios[index].fotoPerfil %>" alt="<%= listaPosteos[i].email %>">
+                                        <img class= "profile" src="<%= listaPosteos[i].comentarios[index].fotoPerfil %>" alt="<%= listaPosteos[i].nombre %>">
                                         <section class="content">
-                                            <a class="user" href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaPosteos[i].comentarios[index].email%></a>
+                                            <a class="user" href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaPosteos[i].comentarios[index].nombre%></a>
                                             <span class="text"><%= listaPosteos[i].comentarios[index].comentario%></span>
                                         </section>
                                     </article>
