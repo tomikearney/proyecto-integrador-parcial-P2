@@ -30,7 +30,7 @@ const usuariosController = {
       const arrayUserPosts = []; //array para posteos y otro para datos del usuario??
 
       for (let i = 0; i < data.posteos.length; i++) {
-          if (data.posteos[i].idUsuario === ingresoId) {
+          if (data.posteos[i].idUsuario == ingresoId) {
               arrayUserPosts.push (data.posteos[i])
           }            
       }
