@@ -44,7 +44,7 @@ const data = {
             clave: 'postPass22',
             fotoPerfil: "/img/jorge.png",
             fecha: '09/09/2000',
-            dni: "066798539"
+            dni: "40798539"
         },
 
     ],
