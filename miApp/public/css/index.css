@@ -11,7 +11,17 @@ li{
 }
 a {
     text-decoration: none;
-    color: #222
+    color: #222;
+}
+
+.colorHeader{
+    text-decoration: none;
+    color: #fff;
+}
+
+.footerColor{
+    text-decoration: none;
+    color: #fff;
 }
 html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -27,7 +37,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    background-color: #fff;
+    background-color: #333432fd;
 }
 .main-nav {
     display: flex;
@@ -76,7 +86,7 @@ header {
 
 /* Main */
 main {
-    background-color: #fafafa;
+    background-color: #fbfbfd;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -89,6 +99,9 @@ main {
     max-width: 470px;
 }
 
+h1{
+    color: #222
+}
 /* post */
 .post{
     background-color: #fff;
@@ -150,18 +163,20 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    color: #ffff;
 }
 .main-footer {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background: #fff;
+    background-color: #333432fd;
     border-top: 1px solid #ddd;
     padding: 20px 10px;
 }
 .social li {
     margin-right: 20px;
+    color: #fff;
 }
 .team li {
     margin-left: 20px;

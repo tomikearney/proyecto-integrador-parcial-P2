@@ -12,8 +12,8 @@ const indexController ={
         res.render('registracion', { title: 'Express' });
     },
     busqueda: function (req, res, next) {
-        let id = req.params.id; //para b
-        res.render('resultadoBusqueda', {idUsuario:id, listaUsuarios: data.usuario, listaPosteos:data.posteos, title: 'Express' }); //PORQUE A INDEX Y NO A BUSQUEDA
+        let id = req.params.id; 
+        res.render('resultadoBusqueda', {idUsuario:id, listaUsuarios: data.usuario, listaPosteos:data.posteos }); 
     }
 }
 
