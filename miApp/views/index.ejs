@@ -12,7 +12,7 @@
               <article class="post">
                 <div class="info-usuario ">
                   <!--ENLACE PARA MOSTRAR PERFIL-->
-                  <img src="<%= listaPosteos[i].fotoPerfil %>" alt="">
+                  <img src="<%= listaPosteos[i].fotoPerfil %>" alt="<%= listaPosteos[i].nombreUsuarioPost%>">
 
                     <h4> <!--Para cuando se toque el perfil del ususario en inicio se diriga al mismo-->
                       <a href="/users/detalleUsuario/id/<%= listaPosteos[i].idUsuario %>"><%= listaPosteos[i].nombreUsuarioPost%></a>

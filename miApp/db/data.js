@@ -54,6 +54,7 @@ const data = {
             id: 1,
             idUsuario: 1,
             nombreUsuarioPost: "Fran Withel",
+            //ruta para la publicacion
             nombreImg: "5 libros de ficción en inglés",
             descripcionImg: "Si estas comenzando a leer en inglés, a continuación te dejamos algunas opciones entretenidas",
             email: "fran@yahoo.com",

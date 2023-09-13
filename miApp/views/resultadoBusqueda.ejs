@@ -9,7 +9,48 @@
     <main>
         <section class="center main-content">
         <h1>Resultados de búsqueda.</h1>
-        <p>Construir la vista.</p>
+        <!-- Construir la vista -->
+        <% for( let i = 0; i < listaPosteos.length; i++ ) { %>
+            <article class="post">
+                <div class="info-usuario ">
+                  <!--ENLACE PARA MOSTRAR PERFIL-->
+                  <img class= "profile" src="<%= listaPosteos[i].fotoPerfil %>" alt="<%= listaPosteos[i].nombreUsuarioPost%>">
+
+                    <h4> <!--Para cuando se toque el perfil del ususario en inicio se diriga al mismo-->
+                      <a href="/users/detalleUsuario/id/<%= listaPosteos[i].idUsuario %>"><%= listaPosteos[i].nombreUsuarioPost%></a>
+                    </h4>
+                </div>
+                <div class="post-body">
+                    <a href="posts/detallePost/id/<%=listaPosteos[i].id%>">
+                        <img src="https://via.placeholder.com/500x600" alt="">
+                    </a>
+                </div>
+                <ul class="post-reacciones">
+                    <li>
+                        <i class="fa-regular fa-heart"></i>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-comment"></i>
+                    </li>
+                </ul>
+                <div class="post-comentarios">
+                  <!--Descripcion del post-->
+                  <p><%= listaPosteos[i].nombreUsuario %> <%= listaPosteos[i].descripcionImg %></p>
+
+                   <h4>Comentarios</h4>
+                    <ul>
+                      <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos. Solo se muestra 2 comentarios -->
+                    <% for( let index = 0; index < 2; index++ ) { %>
+                        <li><a href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaPosteos[i].comentarios[index].nombre %></a> 
+                            <span><%= listaPosteos[i].comentarios[index].comentario %></span>
+                        </li>
+                      <% } %>
+                      <a href="/posts/detallePost/id/<%=listaPosteos[i].id%>">Ver más...</a> 
+                    </ul>
+                </div>
+            </article>
+        <% } %>
+
         </section>
     </main>
     <%- include('./partials/footer') %>
