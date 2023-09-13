@@ -1,8 +1,30 @@
 const data= require("../db/data");
 
 const usuariosController = {
-    miPerfil: function(req, res, next) {
-        res.render('miPerfil', { listaUsuarios: data.usuario, listaPosteos: data.posteos, title: 'Express' });
+    miPerfil: function (req, res, next) {
+        const perfilId = req.params.id;
+        const arrayPerfil = [];
+        const arrayPosteos = []; // Define arrayPosteos aquí antes del bucle
+
+        for (let i = 0; i < data.usuario.length; i++) {
+            if (data.usuario[i].id == perfilId) {
+                arrayPerfil.push(data.usuario[i]);
+            }
+        }
+
+        // Ahora, fuera del bucle de usuarios, puedes buscar publicaciones relacionadas
+        for (let j = 0; j < data.posteos.length; j++) {
+            if (perfilId == data.posteos[j].idUsuario) {
+                arrayPosteos.push(data.posteos[j]);
+            }
+        }
+
+        res.render('miPerfil', {
+            perfil: arrayPerfil,
+            perfilPosteos: arrayPosteos,
+            title: 'Express'
+        });
+    
     },
     editarPerfil: function(req, res, next) {
         res.render('editarPerfil', { title: 'Express' });
