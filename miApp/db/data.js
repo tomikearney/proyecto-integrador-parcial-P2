@@ -54,6 +54,7 @@ const data = {
             id: 1,
             idUsuario: 1,
             nombreUsuarioPost: "Fran Withel",
+            //ruta para la publicacion
             nombreImg: "5 libros de ficción en inglés",
             descripcionImg: "Si estas comenzando a leer en inglés, a continuación te dejamos algunas opciones entretenidas",
             email: "fran@yahoo.com",
@@ -271,7 +272,7 @@ const data = {
                 idUsuario: 1,
                 nombre: "Fran Withel",
                 fotoPerfil: "/img/fran.png",
-                comentario: "Graicass por la recomendacion muchos lo esperabamos"
+                comentario: "Graciass por la recomendacion muchos lo esperabamos"
             },
             {
                 id: 22,
@@ -328,7 +329,7 @@ const data = {
                 idUsuario: 2,
                 nombre: "Maria Kolek",
                 fotoPerfil: "/img/maria.png",
-                comentario: "¡Buena ideaaa! "
+                comentario: "¡Buena ideaaa!"
             },
             {
                 id: 28,
@@ -459,7 +460,7 @@ const data = {
                 idUsuario: 5,
                 nombre: "Jorge Perez",
                 fotoPerfil: "/img/jorge.png",
-                comentario: "¡Qué maravillosa saga! "
+                comentario: "¡Qué maravillosa saga!"
             }]
         },
 

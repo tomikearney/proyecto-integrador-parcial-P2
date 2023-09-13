@@ -6,11 +6,11 @@
 <body>
     <%- include('./partials/header') %>
 
-    <!--NO APARECE LA CANTIDAD DE POSTEOS QUE HACE EL USUARIO, VER EL CONTROLLER A VER SI CAMPUTURA BIEN LA LISTA DE POSTEOS-->
+<!--LA VALIDACION DE ID ESTA EN CONTROLLES ESTA BIEN? EN POSTEOS HICE AL REVES, PERO ES LO MISMO?-->
     <main>
         <div class="user-detail container">
             <section class="top main-content">
-                <% for( let i = 0; i < listaAboutUsuario.length; i++ ) { %>
+                <% for( let i = 0; i < listaAboutUsuario.length; i++ ) { %> 
                     <img class="profile" src="<%= listaAboutUsuario[i].fotoPerfil %>" alt="<%= listaAboutUsuario[i].nombre %>">
                     <div class="info-usuario">
                         <p><%=listaAboutUsuario[i].nombre %></p> 

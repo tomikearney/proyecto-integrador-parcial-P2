@@ -13,6 +13,7 @@
                     <section class="center main-content post">
                         <div class="info-usuario">
                             <img class = "profile" src="<%= listaPosteos[i].fotoPerfil %>" alt=""> 
+                            
                             <p><a href="/users/detalleUsuario/id/<%= listaPosteos[i].idUsuario%>"><%=listaPosteos[i].nombreUsuarioPost%></a></p>
                         </div>
                         <img class="photo" src="https://via.placeholder.com/500x600" alt="">
@@ -30,7 +31,9 @@
                                     <article class="comment">
                                         <img class= "profile" src="<%= listaPosteos[i].comentarios[index].fotoPerfil %>" alt="<%= listaPosteos[i].nombre %>">
                                         <section class="content">
-                                            <a class="user" href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaPosteos[i].comentarios[index].nombre%></a>
+                                            <a class="user" href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>">
+                                                <p><%= listaPosteos[i].comentarios[index].nombre%></p>
+                                            </a>
                                             <span class="text"><%= listaPosteos[i].comentarios[index].comentario%></span>
                                         </section>
                                     </article>

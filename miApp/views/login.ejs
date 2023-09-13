@@ -8,13 +8,16 @@
 
     <main>
         <section class="center main-content">
-        <h1>ingrese sus datos para ingresar </h1>
+        <h1 >Login</h1>
+        <br>
         <form action="/users/miPerfil/id/1" method="get">
-            <input type="text" value="" name="email" placeholder=" ingrese su email">
-            <input type="password" name="contraseña" value="" placeholder="ingrese su contrañsea">
-            <button type="submit"></button>
+            <label for="email" > Email: </label> <input id = "email" type="email" name="email" value="" required placeholder="Ingrese su email">
+            <br>
+            <label for="clave" > Clave: </label> <input id = "clave" type = "password" name = "clave" value= "" required placeholder="Clave"> 
+            <br>
+            <button class="button" type="submit"> Enviar </button>
         </form>
-        <p>Crear el formulario para ingresar al sitio.</p>
+        <br>
         </section>
     </main>
 

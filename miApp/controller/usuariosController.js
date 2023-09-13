@@ -50,7 +50,7 @@ const usuariosController = {
               arrayUserPosts.push (data.posteos[i])
           }            
       }
-      res.render('detalleUsuario', { listaAboutUsuario:arrayAboutUser, listaPosteos:arrayUserPosts, title: "Detalle de Usuario" });
+      res.render('detalleUsuario', { idUsuario: ingresoId, listaAboutUsuario:arrayAboutUser, listaPosteos:arrayUserPosts, title: "Detalle de Usuario" });
   }
 };
 
