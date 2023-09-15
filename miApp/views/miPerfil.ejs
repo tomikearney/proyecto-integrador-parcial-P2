@@ -9,35 +9,26 @@
             <main>
                 <div class="user-detail container">
                     <section class="top main-content">
-                        <% for( let j = 0; j < perfil.length; j++ ) { %>
-                        
-                      
-                        <img class="profile" src="<%= perfil[j].fotoPerfil %>" alt="">
-                        <% } %>
-                        <div class="info-usuario">
-                          <% for( let i = 0; i < perfil.length; i++ ) { %>
-                         
-                            <p><%= perfil[i].email %></p>
-                            <a class="follow" href= "<%= perfil[i].fotoPerfil %> "><i class="fa-solid fa-user-gear"></i></a>
-                            <ul class="meta">
-                                <li>100 post</li>
-                                <li>200 seguidores</li>
-                                <li>300 seguidos</li>
-                            </ul>
-                             <% } %>
-                        </div>
+                        <img class="profile" src="/img/fran.png" alt="">
+                            <div class="info-usuario">
+                                <p><%=listaAboutUsuario[0].nombre %></p> 
+                                <a class="follow" href="/users/editarPerfil/id/<%= listaAboutUsuario[0].id %>"><i class="fa-solid fa-user-gear"></i></a>
+                                <ul class="meta"> <!--cantidad postos no puede cambiar-->
+                                    <li>2 posts</li>
+                                    <li>200 seguidores</li>
+                                    <li>300 seguidos</li>
+                                </ul>
+                            </div>
                     </section>
                     <section class="bottom">
-                        <% for( let index = 0; index < perfilPosteos.length; index++ ) { %>
-                        
-                       
-                        <article class="post">
-                            <a href=" /posts/detallePost/id/<%=perfilPosteos[index].idUsuario %>">
-                                <img src="https://via.placeholder.com/200x250" alt="">
-                            </a>
-                        </article>
+                        <% for (let j = 0; j < 2; j++) { %>
+                            <article class="post">
+                                <a href="/posts/detallePost/id/<%=listaPosteos[0].idUsuario %>">
+                                    <img src="<%= listaPosteos[0].nombreImg %>" alt="">
+
+                                </a>
+                            </article>
                         <% } %>
-                      
                     </section>
                 </div>
             </main>

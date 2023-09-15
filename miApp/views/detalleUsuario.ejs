@@ -27,7 +27,7 @@
                 <% for (let j = 0; j < listaPosteos.length; j++) { %>
                     <article class="post">
                         <a href="/posts/detallePost/id/<%=listaPosteos[j].idUsuario %>">
-                            <img src="https://via.placeholder.com/200x250" alt="">
+                            <img src="<%=listaPosteos[j].nombreImg%>" alt="">
                         </a>
                     </article>
                 <% } %>

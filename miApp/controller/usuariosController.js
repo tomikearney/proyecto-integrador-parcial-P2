@@ -2,28 +2,26 @@ const data= require("../db/data");
 
 const usuariosController = {
     miPerfil: function (req, res, next) {
-        const perfilId = req.params.id;
-        const arrayPerfil = [];
-        const arrayPosteos = []; // Define arrayPosteos aquí antes del bucle
-
+        const ingresoId = req.params.id;
+        let arrayAboutUser = []; //tendria que estar todo lo relacionado con el usuario
+  
         for (let i = 0; i < data.usuario.length; i++) {
-            if (data.usuario[i].id == perfilId) {
-                arrayPerfil.push(data.usuario[i]);
-            }
-        }
-
-        // Ahora, fuera del bucle de usuarios, puedes buscar publicaciones relacionadas
-        for (let j = 0; j < data.posteos.length; j++) {
-            if (perfilId == data.posteos[j].idUsuario) {
-                arrayPosteos.push(data.posteos[j]);
-            }
-        }
-
-        res.render('miPerfil', {
-            perfil: arrayPerfil,
-            perfilPosteos: arrayPosteos,
-            title: 'Express'
-        });
+            if (ingresoId == data.usuario[i].id) {
+                arrayAboutUser.push(data.usuario[i])
+            }            
+        };
+  
+        if (!arrayAboutUser ) { 
+            return res.send("Usuario no encontrado");
+        };
+  
+        const arrayUserPosts = []; 
+        for (let i = 0; i < data.posteos.length; i++) {
+            if (data.posteos[i].idUsuario == ingresoId) {
+                arrayUserPosts.push (data.posteos[i])
+            }            
+        };
+        res.render('miPerfil', { listaAboutUsuario:data.usuario, listaPosteos:data.posteos, title: "Detalle de Usuario" });
     
     },
     editarPerfil: function(req, res, next) {
@@ -37,19 +35,18 @@ const usuariosController = {
           if (ingresoId == data.usuario[i].id) {
               arrayAboutUser.push(data.usuario[i])
           }            
-      }
+      };
 
-      if (!arrayAboutUser ) {
-          return res.status(404).send("Usuario no encontrado");
-      }
+      if (!arrayAboutUser ) { 
+          return res.send("Usuario no encontrado");
+      };
 
-      const arrayUserPosts = []; //array para posteos y otro para datos del usuario??
-
+      const arrayUserPosts = []; 
       for (let i = 0; i < data.posteos.length; i++) {
           if (data.posteos[i].idUsuario == ingresoId) {
               arrayUserPosts.push (data.posteos[i])
           }            
-      }
+      };
       res.render('detalleUsuario', { idUsuario: ingresoId, listaAboutUsuario:arrayAboutUser, listaPosteos:arrayUserPosts, title: "Detalle de Usuario" });
   }
 };
