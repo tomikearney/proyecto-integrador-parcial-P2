@@ -47,13 +47,13 @@ INSERT INTO usuarios VALUES(DEFAULT, "Tomas Michel", "tomas@example.com", "sTudy
 INSERT INTO usuarios VALUES(DEFAULT, "Jorge Perez", "jorge@example.com", "postPass22", "/img/jorge.png", "2000-09-09", 66798539, DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO posteos VALUES(DEFAULT, 1, "5 libros de ficción en inglés", "Si estas comenzando a leer en inglés, a continuación te dejamos algunas opciones entretenidas", DEFAULT, DEFAULT, DEFAULT);
-INSERT INTO posteos VALUES(DEFAULT, 1, "Novedad Septiembre", "¡Los mejores libros ingresarón este mes! ¿Ya tenes el tuyo?", DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO posteos VALUES(DEFAULT, 1, "Novedades Septiembre", "¡Los mejores libros ingresarón este mes! ¿Ya tenes el tuyo?", DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO posteos VALUES(DEFAULT, 2, "Infantiles", "En este mes se incorporarón NUEVOS libros para los pequeños gigantesss", DEFAULT, DEFAULT, DEFAULT);
-INSERT INTO posteos VALUES(DEFAULT, 2, "LecturaCooperativa", "En este espacio se podra seleccionar un libro que nos guste a todos y poder hacer una lectura compartida.¿Les gusta la idea? Proximamente subimos las fechas", DEFAULT, DEFAULT, DEFAULT);
-INSERT INTO posteos VALUES(DEFAULT, 3, "Recomendacion", "En el día de hoy les venimos a recomendar 2 libros de Ficción. Por un lado De Ira y Amor de Sabaa Tahir y por el otro Valientemente de Maggie Stiefvater", DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO posteos VALUES(DEFAULT, 2, "Lectura cooperativa", "En este espacio se podra seleccionar un libro que nos guste a todos y poder hacer una lectura compartida.¿Les gusta la idea? Proximamente subimos las fechas", DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO posteos VALUES(DEFAULT, 3, "Recomendacion ficción", "En el día de hoy les venimos a recomendar 2 libros de Ficción. Por un lado De Ira y Amor de Sabaa Tahir y por el otro Valientemente de Maggie Stiefvater", DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO posteos VALUES(DEFAULT, 3, "Recomendacion Fantasia", "En el día de hoy les venimos a recomendar 2 libros de Fantasía. Por un lado El Asesinato del Señor Wickham de Claudia Gray y por el otro Una Magia Impregnada de Veneno de Judy l. Lin", DEFAULT, DEFAULT, DEFAULT);
-INSERT INTO posteos VALUES(DEFAULT, 4, "Cuestionamiento1", "Ayudanos a armar una playlist conjunta. Pero antes queremos saber si ustedes leer con música. Dejanos tu respuesta en los comentarios!", DEFAULT, DEFAULT, DEFAULT);
-INSERT INTO posteos VALUES(DEFAULT, 4, "OffBooks", "¡Septiembre es el mes perfecto para sumergirse en un buen libro en Winter Libros! Disfruta de un 10% de descuento en todos nuestros libros, además de envío GRATIS a tu sucursal más cercana en pedidos superiores a 14500.", DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO posteos VALUES(DEFAULT, 4, "Día de estudio", "Ayudanos a armar una playlist conjunta. Pero antes queremos saber si ustedes leer con música. Dejanos tu respuesta en los comentarios!", DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO posteos VALUES(DEFAULT, 4, "Recomendación de Winter libros", "¡Septiembre es el mes perfecto para sumergirse en un buen libro en Winter Libros! Disfruta de un 10% de descuento en todos nuestros libros, además de envío GRATIS a tu sucursal más cercana en pedidos superiores a 14500.", DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO posteos VALUES(DEFAULT, 5, "Imperdibles", "5 Libros que no podés dejar pasar ¿Cuál agregarias?", DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO posteos VALUES(DEFAULT, 5, "HarryPotter", "Descuentos Especiales en todos los libros de la saga de Harry Potter ¿Leístes toda la saga? ¿Qué te parecio?", DEFAULT, DEFAULT, DEFAULT);
 
