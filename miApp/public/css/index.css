@@ -244,7 +244,10 @@ h1{
     height: 25px;
     border: none;
     outline-width: 0;
-    color:#777
+    color:#777;
+    margin-bottom: 5px;
+
+
 }
 .comment-form button {
     padding: 5px 0;
@@ -257,6 +260,26 @@ h1{
     cursor: pointer;
     background-color: forestgreen;
 }
+label{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.form button{
+    padding: 5px 0;
+    background-color:mediumseagreen;
+    border: 1px solid mediumaquamarine;
+    border-radius: 5px;
+    color: #fff;
+}
+input{
+    margin-bottom: 5px;
+}
+
 /* User detail */
 
 .user-detail{

@@ -8,21 +8,14 @@
     <main>
         <section class="center main-content">
         <h1>Editar perfil</h1>
-        <p>Crear el formulario para modificar los datos de perfil de un usuario.</p>
-        <form action="/login" method="GET">
-            <label for="email">Email:</label><input id="email" type="email" name="email" value="" required>
-            <br>
-            <label for="name"> Nombre:</label><input id="nombre" type="text" name="nombre" value="" required>
-            <br>
-            <label for="pass"> Clave:</label><input id= "pass" type="password" name="pass" value="" required>
-            <br>
-            <label for="foto"> Foto de perfil:</label><input id="foto" type="text" name="fotoPerfil" value="">
-            <br>
-            <label for="date"> Fecha de nacimiento:</label><input id="fecha" type="text" name="fecha" value="">
-            <br>
-            <label for="dni">  DNI:</label><input id="dni" type="number" name="dni" value=""   required>
-            <br>
-            <button type="submit"> Enviar</button>
+        <form class="form" action="/login" method="GET">
+             <label for="nombre">Nombre:</label><input id="nombre" type="text" name="nombre" value="" required placeholder="Ingrese su nombre">
+            <label for="email">Email:</label><input id="email" type="email" name="email" value="" required placeholder="Ingrese su email">
+            <label for="pass">Clave:</label><input id= "clave" type="password" name="pass" value="" required placeholder="Ingrese su clave">
+            <label for="foto">Foto de perfil:</label><input id="fotoPerfil" type="text" name="fotoPerfil" value="" placeholder="Suba su foto de perfil">
+            <label for="fecha">Fecha de nacimiento:</label><input id="fecha" type="text" name="fecha" value="" placeholder="Ingrese su fecha de cumpleaños">
+            <label for="dni">DNI:</label><input id="dni" type="number" name="dni" value="" required placeholder="Ingrese su DNI">
+            <button type="submit">Enviar</button>
         </form>
     </section>
     </main>
