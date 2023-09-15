@@ -54,7 +54,6 @@ const data = {
             id: 1,
             idUsuario: 1,
             nombreUsuarioPost: "Fran Withel",
-            //ruta para la publicacion
             nombreImg:"https://i.pinimg.com/750x/e4/2f/aa/e42faae39332f20bdd18f065a90c174f.jpg",
             descripcionImg:"Si estas comenzando a leer en inglés, a continuación te dejamos algunas opciones entretenidas",
             email: "fran@yahoo.com",

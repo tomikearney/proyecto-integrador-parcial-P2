@@ -18,13 +18,16 @@
                                     <li>200 seguidores</li>
                                     <li>300 seguidos</li>
                                 </ul>
+                                <p><%= listaAboutUsuario[0].email %> </p>
+                                <p><%= listaAboutUsuario[0].dni %> </p>
+
                             </div>
                     </section>
                     <section class="bottom">
                         <% for (let j = 0; j < 2; j++) { %>
                             <article class="post">
-                                <a href="/posts/detallePost/id/<%=listaPosteos[0].id %>">
-                                    <img src="<%= listaPosteos[0].nombreImg %>" alt="">
+                                <a href="/posts/detallePost/id/<%=listaPosteos[j].id %>">
+                                    <img src="<%= listaPosteos[j].nombreImg %>" alt="">
 
                                 </a>
                             </article>
