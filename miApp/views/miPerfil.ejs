@@ -11,15 +11,15 @@
                     <section class="top main-content">
                         <img class="profile" src="/img/fran.png" alt="">
                             <div class="info-usuario">
-                                <p><%=listaAboutUsuario[0].nombre %></p> 
+                                <h1><%=listaAboutUsuario[0].nombre %></h1> 
                                 <a class="follow" href="/users/editarPerfil/id/<%= listaAboutUsuario[0].id %>"><i class="fa-solid fa-user-gear"></i></a>
                                 <ul class="meta"> <!--cantidad postos no puede cambiar-->
                                     <li>2 posts</li>
                                     <li>200 seguidores</li>
                                     <li>300 seguidos</li>
                                 </ul>
-                                <p><%= listaAboutUsuario[0].email %> </p>
-                                <p><%= listaAboutUsuario[0].dni %> </p>
+                                <p>Email: <%=  listaAboutUsuario[0].email %> </p>
+                                <p>DNI: <%= listaAboutUsuario[0].dni %> </p>
 
                             </div>
                     </section>
