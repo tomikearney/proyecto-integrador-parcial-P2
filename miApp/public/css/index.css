@@ -14,15 +14,6 @@ a {
     color: #222;
 }
 
-.colorHeader{
-    text-decoration: none;
-    color: #fff;
-}
-
-.footerColor{
-    text-decoration: none;
-    color: #fff;
-}
 html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -39,6 +30,11 @@ header {
     right: 0;
     background-color: #333432fd;
 }
+.colorHeader{
+    text-decoration: none;
+    color: #fff;
+}
+
 .main-nav {
     display: flex;
     flex-wrap: wrap;
@@ -54,7 +50,7 @@ header {
     font-size: 18px;
 }
 .search {
-    background-color: #EBEDF0;
+    background-color: #f6f9ff;
     padding: 10px;
     border-radius: 10px;
     width: 300px;
@@ -113,6 +109,10 @@ h1{
 .post-body img {
     width: 100%;
 }
+.postVerMas{
+    color: #17181a;
+}
+
 .info-usuario,
 .post-reacciones,
 .post-comentarios {
@@ -180,8 +180,12 @@ h1{
 }
 .team li {
     margin-left: 20px;
+    text-decoration: underline;
 }
-
+.footerColor{
+    text-decoration: none;
+    color: #fff;
+}
 /* Post detail */
 .post-detail {
     display: flex;
@@ -199,6 +203,7 @@ h1{
 .post-detail .right {
     width: 34%;
 }
+
 .comments div {
     margin-top: 20px;
     padding-top: 10px;
@@ -231,6 +236,8 @@ h1{
     flex-direction: column;
     justify-content: space-between;
     border-radius: 5px;
+    font-weight: bolder;
+
 }
 .comment-form input {
     margin-bottom: 10px;
@@ -263,11 +270,10 @@ h1{
 }
 .user-detail .bottom{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 40px;
-    width: 70%;
+    /* padding: -2px 40px; */
+    width: 100%;
 }
 .user-detail .post{
     width: 200px;

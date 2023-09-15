@@ -2,25 +2,6 @@ const data= require("../db/data");
 
 const usuariosController = {
     miPerfil: function (req, res, next) {
-        const ingresoId = req.params.id;
-        let arrayAboutUser = []; //tendria que estar todo lo relacionado con el usuario
-  
-        for (let i = 0; i < data.usuario.length; i++) {
-            if (ingresoId == data.usuario[i].id) {
-                arrayAboutUser.push(data.usuario[i])
-            }            
-        };
-  
-        if (!arrayAboutUser ) { 
-            return res.send("Usuario no encontrado");
-        };
-  
-        const arrayUserPosts = []; 
-        for (let i = 0; i < data.posteos.length; i++) {
-            if (data.posteos[i].idUsuario == ingresoId) {
-                arrayUserPosts.push (data.posteos[i])
-            }            
-        };
         res.render('miPerfil', { listaAboutUsuario:data.usuario, listaPosteos:data.posteos, title: "Detalle de Usuario" });
     
     },
@@ -29,8 +10,7 @@ const usuariosController = {
     },
     detalleUsuario: function(req, res, next) {
       const ingresoId = req.params.id;
-      let arrayAboutUser = []; //tendria que estar todo lo relacionado con el usuario
-
+      let arrayAboutUser = []; 
       for (let i = 0; i < data.usuario.length; i++) {
           if (ingresoId == data.usuario[i].id) {
               arrayAboutUser.push(data.usuario[i])
