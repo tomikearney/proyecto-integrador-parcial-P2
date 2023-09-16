@@ -4,9 +4,11 @@
     <%- include('./partials/head') %>
 
     <body>
-        
-    <%- include('./partials/header') %>
-
+        <% if (usuarioLogueado) { %>
+            <%- include('./partials/headerLogueado') %>
+        <% } else { %>
+            <%- include('./partials/header') %>
+        <% } %>
     <main>
         <section class="center main-content">
         <h1>Registrate</h1>
@@ -15,7 +17,7 @@
             <label for="email">Email:</label><input id="email" type="email" name="email" value="" required placeholder="Ingrese su email">
             <label for="pass">Clave:</label><input id= "clave" type="password" name="pass" value="" required placeholder="Ingrese su clave">
             <label for="foto">Foto de perfil:</label><input id="fotoPerfil" type="text" name="fotoPerfil" value="" placeholder="Suba su foto de perfil">
-            <label for="fecha">Fecha de nacimiento:</label><input id="fecha" type="text" name="fecha" value="" placeholder="Ingrese su fecha de cumpleaños">
+            <label for="fecha">Fecha de nacimiento:</label><input id="fecha" type="date" name="fecha" value="" placeholder="Ingrese su fecha de cumpleaños">
             <label for="dni">DNI:</label><input id="dni" type="number" name="dni" value="" required placeholder="Ingrese su DNI">
             <button type="submit">Enviar</button>
         </form>

@@ -2,11 +2,11 @@ const data= require("../db/data");
 
 const usuariosController = {
     miPerfil: function (req, res, next) {
-        res.render('miPerfil', { listaAboutUsuario:data.usuario, listaPosteos:data.posteos, title: "Detalle de Usuario" });
+        res.render('miPerfil', { listaAboutUsuario:data.usuario, listaPosteos:data.posteos, usuarioLogueado: true });
     
     },
     editarPerfil: function(req, res, next) {
-        res.render('editarPerfil', { title: 'Express' });
+        res.render('editarPerfil', { usuarioLogueado: true});
     },
     detalleUsuario: function(req, res, next) {
       const ingresoId = req.params.id;
@@ -27,7 +27,7 @@ const usuariosController = {
               arrayUserPosts.push (data.posteos[i])
           }            
       };
-      res.render('detalleUsuario', { idUsuario: ingresoId, listaAboutUsuario:arrayAboutUser, listaPosteos:arrayUserPosts, title: "Detalle de Usuario" });
+      res.render('detalleUsuario', { idUsuario: ingresoId, listaAboutUsuario:arrayAboutUser, listaPosteos:arrayUserPosts, usuarioLogueado: true });
   }
 };
 

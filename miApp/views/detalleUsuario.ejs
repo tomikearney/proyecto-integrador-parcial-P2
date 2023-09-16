@@ -4,9 +4,12 @@
     <%- include('./partials/head') %>
 
 <body>
-    <%- include('./partials/header') %>
+    <% if (usuarioLogueado) { %>
+        <%- include('./partials/headerLogueado') %>
+    <% } else { %>
+        <%- include('./partials/header') %>
+    <% } %>
 
-<!--LA VALIDACION DE ID ESTA EN CONTROLLES ESTA BIEN? EN POSTEOS HICE AL REVES, PERO ES LO MISMO?-->
     <main>
         <div class="user-detail container">
             <section class="top main-content">

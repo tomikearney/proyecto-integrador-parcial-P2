@@ -4,8 +4,12 @@
 <%- include('./partials/head') %>
 
     <body>
-        <%- include('./partials/headerLogueado') %>
-
+        <% if (usuarioLogueado) { %>
+            <%- include('./partials/headerLogueado') %>
+        <% } else { %>
+            <%- include('./partials/header') %>
+        <% } %>
+        
             <main>
                 <div class="user-detail container">
                     <section class="top main-content">

@@ -5,7 +5,12 @@
     <%- include('./partials/head') %>
 
 <body>
-    <%- include('./partials/header') %>
+    <% if (usuarioLogueado) { %>
+        <%- include('./partials/headerLogueado') %>
+    <% } else { %>
+        <%- include('./partials/header') %>
+    <% } %>
+    
     <main>
         <div class="post-detail container">
             <% for( let i = 0; i < listaPosteos.length; i++ ) { %>

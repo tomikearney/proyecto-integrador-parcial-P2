@@ -4,8 +4,12 @@
     <%- include('./partials/head') %>
 
     <body>
+        <% if (usuarioLogueado) { %>
+            <%- include('./partials/headerLogueado') %>
+        <% } else { %>
+            <%- include('./partials/header') %>
+        <% } %>
         
-    <%- include('./partials/header') %>
     <main>
         <section class="center main-content">
         <h1>Resultados de búsqueda</h1>
@@ -13,7 +17,6 @@
         <% for( let i = 0; i < listaPosteos.length; i++ ) { %>
             <article class="post">
                 <div class="info-usuario ">
-                  <!--ENLACE PARA MOSTRAR PERFIL-->
                   <img class= "profile" src="<%= listaPosteos[i].fotoPerfil %>" alt="<%= listaPosteos[i].nombreUsuarioPost%>">
 
                     <h4> 

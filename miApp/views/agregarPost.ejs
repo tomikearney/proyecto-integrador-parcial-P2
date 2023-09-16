@@ -5,13 +5,18 @@
 
 <body>
     
-<%- include('./partials/headerLogueado') %>
+    <% if (usuarioLogueado) { %>
+        <%- include('./partials/headerLogueado') %>
+    <% } else { %>
+        <%- include('./partials/header') %>
+    <% } %>
+
     <main>
         <section class="center main-content">
         <h1>Nuevo Post</h1>
         <!--el action es login?-->
         <form class="form" action="/login" method="GET">
-            <label for="nombreImg">Nombre de la imagen: </label> <input id="nombreImg" type="text" name="nombreImg" value="">
+            <label for="nombreImg">Nombre de la imagen: </label> <input id="nombreImg" type="text" name="nombreImg" value="" placeholder="Ingrese el nombre">
             <label for="urlImg">URL: </label> <input id="urlImg" type="text" name="urlImg" value="" required placeholder="Ingrese la ruta absoluta">
             <label for = "descripcionImg">Descripción del posteo: </label><input id="descripcionImg" type="text" name ="descripcionImg" value="" placeholder="Descripción de tu post">
             <button type="submit">Enviar</button>
