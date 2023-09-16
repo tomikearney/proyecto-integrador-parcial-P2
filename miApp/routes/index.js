@@ -3,7 +3,7 @@ var router = express.Router();
 const indexController = require("../controller/indexController")
 
 
-router.get('/inicio', indexController.index);
+router.get('/', indexController.index);
 
 router.get('/login', indexController.login);
 

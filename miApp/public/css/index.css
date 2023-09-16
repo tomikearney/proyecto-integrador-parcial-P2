@@ -93,6 +93,7 @@ main {
 
 .main-content {
     max-width: 470px;
+    margin-left: -9%;
 }
 
 h1{
