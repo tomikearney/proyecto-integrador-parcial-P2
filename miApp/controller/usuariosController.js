@@ -1,7 +1,10 @@
-const data= require("../db/data");
+const data = require("../database/models");
+const usuario = data.Usuario;
+const op = data.Sequelize.Op
 
 const usuariosController = {
     miPerfil: function (req, res, next) {
+        //si me traigo un solo registro con find by pk
         res.render('miPerfil', { listaAboutUsuario:data.usuario, listaPosteos:data.posteos, usuarioLogueado: true });
     
     },
