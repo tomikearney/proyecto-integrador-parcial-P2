@@ -1,5 +1,5 @@
 //nombre de los modelos en singular
-module.exports= function (sequelize, DataTypes) {
+module.exports= function (sequelize, dataTypes) {
     //alias
     let alias ="Usuario";
 
@@ -8,34 +8,34 @@ module.exports= function (sequelize, DataTypes) {
         id:{
             autoIncrement: true,
             primaryKey: true,
-            type: DataTypes.INTEGER
+            type: dataTypes.INTEGER
         },
         nombre:{
-            type: DataTypes.STRING
+            type: dataTypes.STRING
         },
         email:{
-            type: DataTypes.STRING
+            type: dataTypes.STRING
         },
         clave:{
-            type: DataTypes.STRING
+            type: dataTypes.STRING
         },
         fotoPerfil:{
-            type:DataTypes.STRING
+            type:dataTypes.STRING
         },
         fecha:{
-            type:DataTypes.DATE
+            type:dataTypes.DATE
         },
         dni:{
-            type: DataTypes.INTEGER
+            type: dataTypes.INTEGER
         },
         createdAt : {
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         },
         updatedAt: {
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         },
         deletedAt:{ // puede estar vacio por ello es null, pero si es notNull puede estar vacio
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         }
         
         

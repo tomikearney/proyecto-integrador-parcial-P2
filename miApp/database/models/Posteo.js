@@ -1,5 +1,5 @@
 //nombre de los modelos en singular
-module.exports= function (sequelize, DataTypes) {
+module.exports= function (sequelize, dataTypes) {
     //alias
     let alias ="Posteo";
 
@@ -8,26 +8,26 @@ module.exports= function (sequelize, DataTypes) {
         id:{
             autoIncrement: true,
             primaryKey: true,
-            type: DataTypes.INTEGER
+            type: dataTypes.INTEGER
         },
         idUsuario:{
-            type: DataTypes.INTEGER
+            type: dataTypes.INTEGER
         },
         nombreImg:{
-            type: DataTypes.STRING
+            type: dataTypes.STRING
         },
         descripcionImg:{
-            type: DataTypes.STRING
+            type: dataTypes.STRING
         },
        
         createdAt : {
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         },
         updatedAt: {
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         },
         updatedAt:{
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         }
         
         
