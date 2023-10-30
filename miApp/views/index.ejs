@@ -10,21 +10,25 @@
       <%- include('./partials/header') %>
   <% } %>
 
+  <!--  res.render('index', { dataCompleta: result }); -->
+
     <main>
         <section class="center main-content">
-            <% for( let i = 0; i < listaPosteos.length; i++ ) { %>
+            <% for( let i = 0; i < dataCompleta.length; i++ ) { %>
               <article class="post">
                 <div class="info-usuario ">
                   <!--ENLACE PARA MOSTRAR PERFIL-->
-                  <img src="<%= listaPosteos[i].fotoPerfil %>" alt="<%= listaPosteos[i].nombreUsuarioPost%>">
+                  <img src="<%= dataCompleta[i].posteoUsuario.fotoPerfil %>" alt="<%= dataCompleta[i].posteoUsuario.nombre%>">
 
                     <h4> 
-                      <a href="/users/detalleUsuario/id/<%= listaPosteos[i].idUsuario %>"><%= listaPosteos[i].nombreUsuarioPost%></a>
+                      <a href="/users/detalleUsuario/id/<%= dataCompleta[i].posteoUsuario.id %>"><%= dataCompleta[i].posteoUsuario.nombre%></a>
                     </h4>
                 </div>
                 <div class="post-body">
-                    <a href="posts/detallePost/id/<%=listaPosteos[i].id%>">
-                        <img class="photo" src="<%= listaPosteos[i].urlImg %>" alt="">
+                    <a href="posts/detallePost/id/<%=dataCompleta[i].id%>">
+                        <img class="photo" src="<%= dataCompleta[i].nombreImg %>" alt="Posteo">
+
+                    <!--HAY QUE MODIFICAR LA RUTA DE CADA UNO DEL NOMBRE IMG O AGREGAR UNO QUE TENGA LA URL PORQUE SINO NO MUESTRA LA PUBLICACION-->
                     </a>
                 </div>
                 <ul class="post-reacciones">
@@ -37,17 +41,17 @@
                 </ul>
                 <div class="post-comentarios">
                   <!--Descripcion del post-->
-                  <p><%= listaPosteos[i].nombreUsuario %> <%= listaPosteos[i].descripcionImg %></p>
+                  <p><%= dataCompleta[i].posteoUsuario.nombre %> <%= dataCompleta[i].descripcionImg %></p>
 
                    <h4>Comentarios</h4>
                     <ul>
                       <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos. Solo se muestra 2 comentarios -->
                     <% for( let index = 0; index < 2; index++ ) { %>
-                        <li><a href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaPosteos[i].comentarios[index].nombre %></a> 
-                            <span><%= listaPosteos[i].comentarios[index].comentario %></span>
+                        <li><a href="/users/detalleUsuario/id/<%= dataCompleta[i].posteoComentario[index].comentarioUsuario.id %>"><%= dataCompleta[i].posteoComentario[index].comentarioUsuario.nombre %></a> 
+                            <span><%= dataCompleta[i].posteoUsuario.usuarioComentario[index].comentario %></span>
                         </li>
                       <% } %>
-                      <a class ="postVerMas" href="/posts/detallePost/id/<%=listaPosteos[i].id%>">Ver más...</a> 
+                      <a class ="postVerMas" href="/posts/detallePost/id/<%=dataCompleta[i].id%>">Ver más...</a> 
                     </ul>
                 </div>
             </article>

@@ -21,13 +21,13 @@ module.exports= function (sequelize, dataTypes) {
         },
        
         createdAt : {
-            type: dataTypes.DATE,
+            type: dataTypes.DATE
         },
         updatedAt: {
-            type: dataTypes.DATE,
+            type: dataTypes.DATE
         },
         updatedAt:{
-            type: dataTypes.DATE,
+            type: dataTypes.DATE
         }
         
         
@@ -44,12 +44,13 @@ module.exports= function (sequelize, dataTypes) {
     //relaciones
     Posteos.associate = function (models) {
         Posteos.belongsTo (models.Usuario,{
-            as: "usuarios", //alias de relaciones
+            as: "posteoUsuario", //alias de relaciones
             foreignKey :"idUsuario"
         });
 
         Posteos.hasMany (models.Comentario,{
-            as: "comentarios", //alias de relaciones
+            as: "posteoComentario", //alias de relaciones
+           // antes se llamaba comentario
             foreignKey :"idPosteo"
         });
     }

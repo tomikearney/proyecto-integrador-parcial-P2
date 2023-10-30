@@ -20,13 +20,13 @@ module.exports= function (sequelize, dataTypes) {
             type: dataTypes.STRING
         },
         createdAt : {
-            type: dataTypes.DATE,
+            type: dataTypes.DATE
         },
         updatedAt: {
-            type: dataTypes.DATE,
+            type: dataTypes.DATE
         },
         updatedAt:{
-            type: dataTypes.DATE,
+            type: dataTypes.DATE
         }
         
     }
@@ -42,12 +42,14 @@ module.exports= function (sequelize, dataTypes) {
     //relaciones
     Comentarios.associate = function (models) {
         Comentarios.belongsTo (models.Usuario,{
-            as: "usuarios", //alias de relaciones
+            as: "comentarioUsuario", //alias de relaciones
+            //cambio alias porue 
             foreignKey :"idUsuario"
         });
 
         Comentarios.belongsTo (models.Posteo,{
-            as: "posteos", //alias de relaciones
+            as: "comentarioPosteo", //alias de relaciones
+            //antes llamado posteos
             foreignKey :"idPosteo"
         });
     

@@ -12,26 +12,44 @@ const usuariosController = {
         res.render('editarPerfil', { usuarioLogueado: true});
     },
     detalleUsuario: function(req, res, next) {
-      const ingresoId = req.params.id;
-      let arrayAboutUser = []; 
-      for (let i = 0; i < data.usuario.length; i++) {
-          if (ingresoId == data.usuario[i].id) {
-              arrayAboutUser.push(data.usuario[i])
-          }            
+      let ingresoId = req.params.id;
+      let relacion ={
+        include : {
+            all: true,
+            nested: true
+        }
       };
+      usuario.findByPk(ingresoId,relacion)
+      .then(function (result) {
+      // res.send (result)
+        res.render('detalleUsuario', { idUsuario: ingresoId, listaAboutUsuario: result, listaPosteos:result.usuarioPosteo, usuarioLogueado: true})
+      })
+      .catch (function (error) {
+        res.send(error)
+      })
 
-      if (!arrayAboutUser ) { 
-          return res.send("Usuario no encontrado");
-      };
+    //   let arrayAboutUser = []; 
+    //   for (let i = 0; i < data.usuario.length; i++) {
+    //       if (ingresoId == data.usuario[i].id) {
+    //           arrayAboutUser.push(data.usuario[i])
+    //       }            
+    //   };
 
-      const arrayUserPosts = []; 
-      for (let i = 0; i < data.posteos.length; i++) {
-          if (data.posteos[i].idUsuario == ingresoId) {
-              arrayUserPosts.push (data.posteos[i])
-          }            
-      };
-      res.render('detalleUsuario', { idUsuario: ingresoId, listaAboutUsuario:arrayAboutUser, listaPosteos:arrayUserPosts, usuarioLogueado: true });
-  }
+    //   if (!arrayAboutUser ) { 
+    //       return res.send("Usuario no encontrado");
+    //   };
+
+    //   const arrayUserPosts = []; 
+    //   for (let i = 0; i < data.posteos.length; i++) {
+    //       if (data.posteos[i].idUsuario == ingresoId) {
+    //           arrayUserPosts.push (data.posteos[i])
+    //       }            
+    //       };
+    //       res.render('detalleUsuario', { idUsuario: ingresoId, listaAboutUsuario:arrayAboutUser, listaPosteos:arrayUserPosts, usuarioLogueado: true });
+    }
 };
 
 module.exports = usuariosController;
+
+/*NOTA
+1. MODIFICO DETALLES USUARIO CREANDO EL FOR Y LO DEMAS EN LA VISTA DIRECTO */

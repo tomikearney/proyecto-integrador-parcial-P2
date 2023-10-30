@@ -10,13 +10,18 @@
         <%- include('./partials/header') %>
     <% } %>
 
+<!-- res.render('detalleUsuario', { idUsuario: ingresoId, listaAboutUsuario: result, listaPosteos:result.usuarioPosteo, usuarioLogueado: true})-->
     <main>
-        <div class="user-detail container">
+        <% if (idUsuario > 5) { %>
+            <h2 class="sinResponder">No hay resultados para ese id elegido. Por favor elija otro</h2>
+           
+            <% } else {%>
+            
+            <div class="user-detail container">
             <section class="top main-content">
-                <% for( let i = 0; i < listaAboutUsuario.length; i++ ) { %> 
-                    <img class="profile" src="<%= listaAboutUsuario[i].fotoPerfil %>" alt="<%= listaAboutUsuario[i].nombre %>">
+                    <img class="profile" src="<%= listaAboutUsuario.fotoPerfil %>" alt="<%= listaAboutUsuario.nombre %>">
                     <div class="info-usuario">
-                        <h1><%=listaAboutUsuario[i].nombre %></h1> 
+                        <h1><%=listaAboutUsuario.nombre %></h1> 
                         <a class="follow" href="">seguir</a>
                         <ul class="meta"> <!--COMO HAGO PARA QUE CAMBIE-->
                             <li><%= listaPosteos.length %> posts</li>
@@ -24,19 +29,19 @@
                             <li>300 seguidos</li>
                         </ul>
                     </div>
-                <% } %>
             </section>
             <section class="bottom">
-                <% for (let j = 0; j < listaPosteos.length; j++) { %>
+                <% for (let i = 0; i < listaPosteos.length; i++) { %>
                     <article class="post">
-                        <a href="/posts/detallePost/id/<%=listaPosteos[j].id %>">
-                            <img src="<%=listaPosteos[j].urlImg%>" alt="">
+                        <a href="/posts/detallePost/id/<%=listaPosteos[i].id %>">
+                            <img src="<%=listaPosteos[i].nombreImg%>" alt="Posteo">
                         </a>
                     </article>
                 <% } %>
             </section>
+         </div>
+        <% } %>
 
-        </div>
     </main>
 
     <%- include('./partials/footer') %>

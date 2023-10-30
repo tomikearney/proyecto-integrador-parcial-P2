@@ -10,48 +10,51 @@
     <% } else { %>
         <%- include('./partials/header') %>
     <% } %>
-    
+
+<!-- res.render('detallePost', { idPosteo: idPost, listaUsuarios: result.posteoUsuario, listaPosteos:result, usuarioLogueado: true})-->
     <main>
         <div class="post-detail container">
-            <% for( let i = 0; i < listaPosteos.length; i++ ) { %>
-                <% if (i+1 == idPosteo) { %>
+                <% if (idPosteo > 10) { %>
+                    <h2 class="sin-resultados">No hay resultados para ese id ingresado. Elija otro</h2>
+                
+                    <% } else{ %>
+
                     <section class="center main-content post">
                         <div class="info-usuario">
-                            <img class = "profile" src="<%= listaPosteos[i].fotoPerfil %>" alt=""> 
+                            <img class = "profile" src="<%= listaUsuarios.fotoPerfil %>" alt="Foto de perfil del usuario"> 
                             
                             <h2>
-                                <a href="/users/detalleUsuario/id/<%= listaPosteos[i].idUsuario%>"><%=listaPosteos[i].nombreUsuarioPost%></a>
+                                <a href="/users/detalleUsuario/id/<%= listaUsuarios.id%>"><%=listaUsuarios.nombre%></a>
                             </h2>
                         </div>
-                        <img class="photo" src="<%= listaPosteos[i].urlImg %>" alt="">
+                        <img class="photo" src="<%= listaPosteos.nombreImg%>" alt="Foto del posteo">
                     </section>
 
                     <section class="right">
                         <h4>Comentarios</h4>
                         <section class="comments">
-                            <form action="" class="comment-form">
+ <!--agregar al fom action y method-->                       
+                        <form action="" 
+                            class="comment-form">
                                 <input type="text" class="input" placeholder="Agregar comentario">
                                 <button type="submit">Comentar</button>
                             </form>
                             <div>
-                                <% for( let index=0; index < listaPosteos[i].comentarios.length; index++ ) { %>
+                                <% for( let i=0; i < listaPosteos.posteoComentario.length; i++ ) { %>
                                     <article class="comment">
-                                        <img class= "profile" src="<%= listaPosteos[i].comentarios[index].fotoPerfil %>" alt="<%= listaPosteos[i].comentarios[index].nombre %>">
+                                        <img class= "profile" src="<%= listaPosteos.posteoComentario[i].comentarioUsuario.fotoPerfil %>" alt="<%= listaPosteos.posteoComentario[i].comentarioUsuario.nombre %>">
                                         <section class="content">
-                                            <a class="user" href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>">
-                                                <p><%= listaPosteos[i].comentarios[index].nombre%></p>
+                                            <a class="user" href="/users/detalleUsuario/id/<%= listaPosteos.posteoComentario[i].comentarioUsuario.id %>">
+                                                <p><%= listaPosteos.posteoComentario[i].comentarioUsuario.nombre%></p>
                                             </a>
-                                            <span class="text"><%= listaPosteos[i].comentarios[index].comentario%></span>
+                                            <span class="text"><%= listaPosteos.posteoComentario[i].comentario%></span>
                                         </section>
                                     </article>
                                     <% } %>
-        
                             </div>
                         </section>
                     </section>
-                <% } %>
-            <% } %>
-           
+                <% } %>           
         </div>
     </main>
 

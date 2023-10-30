@@ -29,13 +29,13 @@ module.exports= function (sequelize, dataTypes) {
             type: dataTypes.INTEGER
         },
         createdAt : {
-            type: dataTypes.DATE,
+            type: dataTypes.DATE
         },
         updatedAt: {
-            type: dataTypes.DATE,
+            type: dataTypes.DATE
         },
         deletedAt:{ // puede estar vacio por ello es null, pero si es notNull puede estar vacio
-            type: dataTypes.DATE,
+            type: dataTypes.DATE
         }
         
         
@@ -52,13 +52,13 @@ module.exports= function (sequelize, dataTypes) {
     //relaciones
     Usuarios.associate = function (models) {
         Usuarios.hasMany(models.Posteo, { // alias de modelo Posteo
-            as: "posteos", //alias de relaciones
+            as: "usuarioPosteo", //alias de relaciones
             foreignKey: "idUsuario"
         });
     
         /*ahora vemos la contraparte en Posteos */
     Usuarios.hasMany (models.Comentario,{
-        as: "comentarios", //alias de relaciones
+        as: "usuarioComentario", //alias de relaciones
         foreignKey: "idUsuario"
     })
 
