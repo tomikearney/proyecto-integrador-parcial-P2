@@ -20,7 +20,7 @@ const indexController ={
             // res.send (result)
             // res.render('index', { listaUsuarios: result.usuarios, listaPosteos:result, usuarioLogueado: true});
 
-            res.render('index', { dataCompleta: result,usuarioLogueado: true }); /*mando toda la informacion y luego ingresamos con a posicion desde vista */
+            res.render('index', { dataCompleta: result, usuarioLogueado: true }); /*mando toda la informacion y luego ingresamos con a posicion desde vista */
 
         })
         .catch((error) => {
@@ -47,9 +47,9 @@ const indexController ={
                 {nombre: {[op.like]: `%${busqueda}%`}}
             ],
 
-            include :[ {association:"posteos"},
-            {association:"comentarios"}
-]
+            include :[ {association:"usuarioPosteo"},
+            {association:"usuarioComentario"}
+        ]
             
         };
 
