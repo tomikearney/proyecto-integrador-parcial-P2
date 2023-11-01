@@ -1,8 +1,8 @@
 const data = require("../database/models");
 const posteo = data.Posteo; // Posteo es el alias del modelo
-const usuario = data. Usuario;
+const usuario = data.Usuario;
 const op = data.Sequelize.Op;
-
+const bcrypt = require("bcryptjs")
 
 const indexController ={
     index :function(req, res, next) {
@@ -33,8 +33,59 @@ const indexController ={
     login: function (req, res) {
         res.render('login', { usuarioLogueado: false });
     },
-    registro: function (req, res) {
+    loginPost: (req,res,next) => {
+        let emailBuscado = req.body.email;
+        let pass = req.body.clave;
+
+        let criterio ={
+            where: [{
+                email:emailBuscado
+            }]
+        };
+
+        usuario.findOne (criterio)
+
+        .then((result) =>{
+            if (result != null){
+                let check = bcrypt.compareSync(pass,result.clave)
+                if (check) {
+                    return res.redirect ("/")
+                } else {
+                    return res.render ("login")
+                }
+            }else{
+                return res.send ("No existe el mail " + emailBuscado)
+            }
+        })
+        .catch((error)=>{
+            return res.send(error)
+        })
+    },
+
+    registro: function (req, res,next) {
+        /*crear un condicional si queremos que sea distinto a undefinded y es true se envia a crear el post y si no a login. Por más que se ingrese por ruta se debe redireccionar correctamente*/
         res.render('registracion', {usuarioLogueado: false });
+    },
+    store:function (req,res,next) {
+        let info = req.body;
+        let user = {
+            nombre : info.nombre,
+            email : info.email,
+            clave : bcrypt.hashSync(info.clave,10),
+            fotoPerfil : info.fotoPerfil,
+            fecha : info.fecha,
+            dni : Number(info.dni),
+            // remember_token:"false"
+
+        };
+        // res.send(user)
+        usuario.create(user)
+        .then((result) => {
+            return res.redirect("/login");
+        }).catch((error) => {
+            return res.send(error)
+        });
+
     },
 
     busqueda: function (req, res) {

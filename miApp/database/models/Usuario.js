@@ -28,6 +28,9 @@ module.exports= function (sequelize, dataTypes) {
         dni:{
             type: dataTypes.INTEGER
         },
+        // remember_token:{
+        //     type:dataTypes.STRING
+        // },
         createdAt : {
             type: dataTypes.DATE
         },
