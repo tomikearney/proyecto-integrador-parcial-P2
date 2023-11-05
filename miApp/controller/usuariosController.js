@@ -7,7 +7,23 @@ const op = data.Sequelize.Op
 
 const usuariosController = {
     miPerfil: function (req, res, next) {
-        res.render('miPerfil', { listaAboutUsuario:data.usuario, listaPosteos:data.posteos, usuarioLogueado: true });
+        let ingresoId= req.params.id;
+        // return res.send(req.params.id)
+        let relacion={
+          include:{
+            all:true,
+            nested: true
+          }
+          
+        };
+        usuario.findByPk(ingresoId, relacion) //usuario es la variable que tiene data.Usuario
+        .then((result)=>{
+          res.send(result)
+          // res.render('miPerfil', { listaAboutUsuario:data.usuario, listaPosteos:data.posteos, usuarioLogueado: true });
+        })
+        .catch((error)=>{
+          return res.send(error)
+        })
       
     },
     editarPerfil: function(req, res, next) {
@@ -15,13 +31,14 @@ const usuariosController = {
     },
     detalleUsuario: function(req, res, next) {
       let ingresoId = req.params.id;
-      let relacion ={
+        // return res.send(req.params.id)
+        let relacion ={
         include : {
             all: true,
             nested: true
         }
       };
-      usuario.findByPk(ingresoId,relacion)
+      usuario.findByPk(ingresoId, relacion)
       .then(function (result) {
       // res.send (result)
         res.render('detalleUsuario', { idUsuario: ingresoId, listaAboutUsuario: result, listaPosteos:result.usuarioPosteo, usuarioLogueado: true})

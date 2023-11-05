@@ -4,7 +4,7 @@
 <%- include('./partials/head') %>
 
     <body>
-        <% if (usuarioLogueado) { %>
+        <% if (locals.user != undefined) { %>
             <%- include('./partials/headerLogueado') %>
         <% } else { %>
             <%- include('./partials/header') %>
@@ -16,8 +16,8 @@
                     <section class="top main-content">
                         <img class="profile" src="/img/fran.png" alt="">
                             <div class="info-usuario">
-                                <h1><%=listaAboutUsuario[0].nombre %></h1> 
-                                <a class="follow" href="/users/editarPerfil/id/<%= listaAboutUsuario[0].id %>"><i class="fa-solid fa-user-gear"></i></a>
+                                <h1><%=user.nombre %></h1> 
+                                <a class="follow" href="/users/editarPerfil/id/<%= user.id %>"><i class="fa-solid fa-user-gear"></i></a>
                                 <ul class="meta"> <!--cantidad postos no puede cambiar-->
                                     <li>2 posts</li>
                                     <li>200 seguidores</li>

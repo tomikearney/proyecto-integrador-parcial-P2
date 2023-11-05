@@ -33,29 +33,36 @@ const indexController ={
     loginPost: (req,res,next) => {
         let emailBuscado = req.body.email;
         let pass = req.body.clave;
-        //recordarme cuadndo se re logueo esto es cookies
+        let rememberMe= req.body.rememberMe;
         let criterio ={
             where: [{
                 email:emailBuscado
             }]
         };
+        // console.log(req.body)
+        // console.log(rememberMe != undefined);
 
         usuario.findOne (criterio)
-
         .then((result) =>{
             if (result != null){
                 let check = bcrypt.compareSync(pass,result.clave)
-                if (check) {
+                //me da un booleano y se peude usar un condicional
+                if (check) { 
+                    // esto es si exite la contraseña y el mail, entonces se configura para que guarde los datos en el momento que se pone recordame --> cookie
+                    req.session.user = result.dataValues;
+                    if(rememberMe != undefined){
+                        res.cookie("UserId"/*nombre de cookie en app.js */,result.id /*valor de la cookie*/,{maxAge:1000*60*5})
+                    }
                     return res.redirect ("/")
                 } else {
-                    return res.render ("login")
+                    res.render('login', { usuarioLogueado: false });
                 }
-            }else{
+            }else {
                 return res.send ("No existe el mail " + emailBuscado)
             }
         })
         .catch((error)=>{
-            return res.send(error)
+            return console.log(error);
         })
     },
 
@@ -65,7 +72,8 @@ const indexController ={
     },
     store:function (req,res,next) {
         let info = req.body;
-        let user = {
+        let user = { 
+            //Se crea un objeto user que contiene los datos del usuario que se va a registrar. 
             nombre : info.nombre,
             email : info.email,
             clave : bcrypt.hashSync(info.clave,10),
@@ -84,11 +92,11 @@ const indexController ={
         });
 
     },
-
+    //TERMINAR DE VER BUSQUEDA
     busqueda: function (req, res) {
         let busqueda = req.query.searchUsuario; 
         
-        console.log(busqueda);
+        // console.log(busqueda);
 
         let filtro = {
             where: [
