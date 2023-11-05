@@ -9,6 +9,11 @@ var router = express.Router();
 
 router.get("/detallePost/id/:id", postsController.detallePost);
 
+/*Mostrar el formulario para agregar un post */
 router.get("/add", postsController.agregarPost);
+
+/*Procesar la información recibida  */
+
+/*Procesar la información recibida  */
 
 module.exports = router;

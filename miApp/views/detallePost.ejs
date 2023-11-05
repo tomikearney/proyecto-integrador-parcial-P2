@@ -17,7 +17,7 @@
                 <% if (idPosteo > 10) { %>
                     <h2 class="sin-resultados">No hay resultados para ese id ingresado. Elija otro</h2>
                 
-                    <% } else{ %>
+                <% } else{ %>
 
                     <section class="center main-content post">
                         <div class="info-usuario">
@@ -33,11 +33,12 @@
                     <section class="right">
                         <h4>Comentarios</h4>
                         <section class="comments">
- <!--agregar al fom action y method-->                       
-                        <form action="" class="comment-form" method="">
+<!--PREGUNTAR EL FORM-->
+                            <form action="" class="comment-form" method="">
                                 <input type="text" class="input" placeholder="Agregar comentario">
                                 <button type="submit">Comentar</button>
-                        </form>
+                             </form>
+                             
                             <div>
                                 <% for( let i=0; i < listaPosteos.posteoComentario.length; i++ ) { %>
                                     <article class="comment">

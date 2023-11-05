@@ -17,9 +17,6 @@ const indexController ={
 
         posteo.findAll(relaciones) 
         .then((result) => {
-            // res.send (result)
-            // res.render('index', { listaUsuarios: result.usuarios, listaPosteos:result, usuarioLogueado: true});
-
             res.render('index', { dataCompleta: result, usuarioLogueado: true }); /*mando toda la informacion y luego ingresamos con a posicion desde vista */
 
         })
@@ -36,7 +33,7 @@ const indexController ={
     loginPost: (req,res,next) => {
         let emailBuscado = req.body.email;
         let pass = req.body.clave;
-
+        //recordarme cuadndo se re logueo esto es cookies
         let criterio ={
             where: [{
                 email:emailBuscado
@@ -91,7 +88,7 @@ const indexController ={
     busqueda: function (req, res) {
         let busqueda = req.query.searchUsuario; 
         
-        // console.log(busqueda);
+        console.log(busqueda);
 
         let filtro = {
             where: [
