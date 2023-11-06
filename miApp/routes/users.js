@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const usuariosController = require("../controller/usuariosController")
 
-  router.get("/miPerfil/id/:id?", usuariosController.miPerfil); 
+  router.get("/miPerfil/id/:id", usuariosController.miPerfil); 
 
   /*Mostrar el formulario de editar mi perfil */
   router.get('/editarPerfil/id/:id', usuariosController.editarPerfil); 

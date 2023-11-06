@@ -12,8 +12,11 @@ router.get("/detallePost/id/:id", postsController.detallePost);
 /*Mostrar el formulario para agregar un post */
 router.get("/add", postsController.agregarPost);
 
-/*Procesar la información recibida  */
+router.post("/add", postsController.storePost)
 
-/*Procesar la información recibida  */
+
+
+/*FALTA HACER: Procesar la información recibida para editar lo que se sube, con el postController.update|destroy */
+/*Mostrar la información recibida  */
 
 module.exports = router;
