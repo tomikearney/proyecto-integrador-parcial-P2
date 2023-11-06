@@ -15,27 +15,22 @@
                     <section class="top main-content">
                         <img class="profile" src="/img/fran.png" alt="">
                             <div class="info-usuario">
-                                <h1><%=listaAboutUsuario[0].nombre %></h1> 
-                                <a class="follow" href="/users/editarPerfil/id/<%= listaAboutUsuario[0].id %>"><i class="fa-solid fa-user-gear"></i></a>
+                                <h1><%=listaAboutUsuario.nombre %></h1> 
+                                <a class="follow" href="/users/editarPerfil/id/<%= listaAboutUsuario.id %>"><i class="fa-solid fa-user-gear"></i></a>
                                 <ul class="meta"> <!--cantidad postos no puede cambiar-->
                                     <li>2 posts</li>
                                     <li>200 seguidores</li>
                                     <li>300 seguidos</li>
                                 </ul>
-                                <p>Email: <%=  listaAboutUsuario[0].email %> </p>
-                                <p>DNI: <%= listaAboutUsuario[0].dni %> </p>
+                                <p>Email: <%=  listaAboutUsuario.email %> </p>
+                                <p>DNI: <%= listaAboutUsuario.dni %> </p>
 
                             </div>
                     </section>
                     <section class="bottom">
-                        <% for (let j = 0; j < 2; j++) { %>
-                            <article class="post">
-                                <a href="/posts/detallePost/id/<%=listaPosteos[j].id %>">
-                                    <img src="<%= listaPosteos[j].urlImg %>" alt="">
-
+                       
                                 </a>
                             </article>
-                        <% } %>
                     </section>
                 </div>
             </main>

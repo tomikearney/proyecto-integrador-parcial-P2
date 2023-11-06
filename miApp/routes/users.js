@@ -5,6 +5,8 @@ const usuariosController = require("../controller/usuariosController")
   router.get("/miPerfil/id/:id", usuariosController.miPerfil); 
 
   router.get('/editarPerfil/id/:id', usuariosController.editarPerfil); 
+  router.post('/editarPerfil/id/:id', usuariosController.update); 
+
   
   router.get('/detalleUsuario/id/:id', usuariosController.detalleUsuario);
   
