@@ -10,5 +10,6 @@ var router = express.Router();
 router.get("/detallePost/id/:id", postsController.detallePost);
 
 router.get("/add", postsController.agregarPost);
+m
 
 module.exports = router;
