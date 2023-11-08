@@ -31,6 +31,7 @@ const indexController ={
         res.render('login', { usuarioLogueado: false });
     },
     loginPost: (req,res,next) => {
+
         let emailBuscado = req.body.email;
         let pass = req.body.clave;
         let rememberMe= req.body.rememberMe;
@@ -39,38 +40,64 @@ const indexController ={
                 email:emailBuscado
             }]
         };
+
         // console.log(req.body)
         // console.log(rememberMe != undefined);
+        /*Validación de formularios*/
 
-        usuario.findOne (criterio)
-        .then((result) =>{
-            if (result != null){
-                let check = bcrypt.compareSync(pass,result.clave)
-                //me da un booleano y se peude usar un condicional
-                if (check) { 
-                    // esto es si exite la contraseña y el mail, entonces se configura para que guarde los datos en el momento que se pone recordame --> cookie
-                    req.session.user = result.dataValues;
-                    if(rememberMe != undefined){
-                        res.cookie("UserId"/*nombre de cookie en app.js */,result.id /*valor de la cookie*/,{maxAge:1000*60*5})
+        let errors = {}
+
+        if (emailBuscado == "") {
+            errors.message = "El campo email está vacío"
+            res.locals.errors = errors //A propiedad(la llamamos errors) le asignamos obj literal errors
+            return res.render("login")
+        }
+        else if (pass == "") {
+            errors.message = "El campo clave está vacío"
+            res.locals.errors = errors //A propiedad(la llamamos errors) le asignamos obj literal errors
+            return res.render("login")
+        }
+        else {
+            usuario.findOne (criterio)
+            .then((result) =>{
+                if (result != null){
+                    let check = bcrypt.compareSync(pass,result.clave)
+                    //me da un booleano y se peude usar un condicional
+                    if (check) { 
+                        // esto es si exite la contraseña y el mail, entonces se configura para que guarde los datos en el momento que se pone recordame --> cookie
+                        req.session.user = result.dataValues;
+                        if(rememberMe != undefined){
+                            res.cookie("UserId"/*nombre de cookie en app.js */,result.id /*valor de la cookie*/,{maxAge:1000*60*5})
+                        }
+                        return res.redirect ("/")
+                    } else {
+                        res.render('login', { usuarioLogueado: false });
                     }
-                    return res.redirect ("/")
-                } else {
-                    res.render('login', { usuarioLogueado: false });
+                }else {
+                    return res.send ("No existe el mail " + emailBuscado)
                 }
-            }else {
-                return res.send ("No existe el mail " + emailBuscado)
-            }
-        })
-        .catch((error)=>{
-            return console.log(error);
-        })
+            })
+            .catch((error)=>{
+                return console.log(error);
+            })
+        }
+
+        
+
+        
     },
 
     registro: function (req, res,next) {
-        /*crear un condicional si queremos que sea distinto a undefinded y es true se envia a crear el post y si no a login. Por más que se ingrese por ruta se debe redireccionar correctamente*/
-        res.render('registracion', {usuarioLogueado: false });
+
+        //CHEQUEAR SI ESTÁ BIEN
+        if (req.session.user != undefined) {
+            res.redirect("/")
+        } else {
+            res.render('registracion', {usuarioLogueado: false });
+        }
     },
     store:function (req,res,next) {
+
         let info = req.body;
         let user = { 
             //Se crea un objeto user que contiene los datos del usuario que se va a registrar. 
@@ -83,6 +110,9 @@ const indexController ={
             // remember_token:"false"
 
         };
+
+        
+
         // res.send(user)
         usuario.create(user)
         .then((result) => {
