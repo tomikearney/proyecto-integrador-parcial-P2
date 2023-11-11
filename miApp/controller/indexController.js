@@ -1,8 +1,8 @@
 const data = require("../database/models");
 const posteo = data.Posteo; // Posteo es el alias del modelo
-const usuario = data. Usuario;
+const usuario = data.Usuario;
 const op = data.Sequelize.Op;
-
+const bcrypt = require("bcryptjs")
 
 const indexController ={
     index :function(req, res, next) {
@@ -17,9 +17,6 @@ const indexController ={
 
         posteo.findAll(relaciones) 
         .then((result) => {
-            // res.send (result)
-            // res.render('index', { listaUsuarios: result.usuarios, listaPosteos:result, usuarioLogueado: true});
-
             res.render('index', { dataCompleta: result, usuarioLogueado: true }); /*mando toda la informacion y luego ingresamos con a posicion desde vista */
 
         })
@@ -33,10 +30,69 @@ const indexController ={
     login: function (req, res) {
         res.render('login', { usuarioLogueado: false });
     },
-    registro: function (req, res) {
-        res.render('registracion', {usuarioLogueado: false });
+    loginPost: (req,res,next) => {
+        let emailBuscado = req.body.email;
+        let pass = req.body.clave;
+        let rememberMe= req.body.rememberMe;
+        let criterio ={
+            where: [{
+                email:emailBuscado
+            }]
+        };
+        // console.log(req.body)
+        // console.log(rememberMe != undefined);
+
+        usuario.findOne (criterio)
+        .then((result) =>{
+            if (result != null){
+                let check = bcrypt.compareSync(pass,result.clave)
+                //me da un booleano y se peude usar un condicional
+                if (check) { 
+                    // esto es si exite la contraseña y el mail, entonces se configura para que guarde los datos en el momento que se pone recordame --> cookie
+                    req.session.user = result.dataValues;
+                    if(rememberMe != undefined){
+                        res.cookie("UserId"/*nombre de cookie en app.js */,result.id /*valor de la cookie*/,{maxAge:1000*60*5})
+                    }
+                    return res.redirect ("/")
+                } else {
+                    res.render('login', { usuarioLogueado: false });
+                }
+            }else {
+                return res.send ("No existe el mail " + emailBuscado)
+            }
+        })
+        .catch((error)=>{
+            return console.log(error);
+        })
     },
 
+    registro: function (req, res,next) {
+        /*crear un condicional si queremos que sea distinto a undefinded y es true se envia a crear el post y si no a login. Por más que se ingrese por ruta se debe redireccionar correctamente*/
+        res.render('registracion', {usuarioLogueado: false });
+    },
+    store:function (req,res,next) {
+        let info = req.body;
+        let user = { 
+            //Se crea un objeto user que contiene los datos del usuario que se va a registrar. 
+            nombre : info.nombre,
+            email : info.email,
+            clave : bcrypt.hashSync(info.clave,10),
+            fotoPerfil : info.fotoPerfil,
+            fecha : info.fecha,
+            dni : Number(info.dni),
+            // remember_token:"false"
+
+        };
+        // res.send(user)
+        usuario.create(user)
+        .then((result) => {
+            return res.redirect("/login");
+        }).catch((error) => {
+            return res.send(error)
+        });
+
+    },
+    //TERMINAR DE VER BUSQUEDA
     busqueda: function (req, res) {
         let busqueda = req.query.searchUsuario; 
         
@@ -66,14 +122,3 @@ const indexController ={
 }
 
 module.exports = indexController;
-
-
-
-/*NOTAS DE LO QUE CAMBIE*/
-/*
-1. voy a ver vista de index
-
-
-
-
-*/

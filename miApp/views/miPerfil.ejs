@@ -4,21 +4,23 @@
 <%- include('./partials/head') %>
 
     <body>
-        <% if (usuarioLogueado) { %>
+        <% if (locals.user != undefined) { %>
             <%- include('./partials/headerLogueado') %>
         <% } else { %>
             <%- include('./partials/header') %>
         <% } %>
-        
-            <main>
+
+<!--FALTA VER ESTO--> 
+<!-- res.render('miPerfil', { listaAboutUsuario:result, listaPosteos:result.usuarioPosteo, usuarioLogueado: true });-->
+           <main>
                 <div class="user-detail container">
                     <section class="top main-content">
-                        <img class="profile" src="/img/fran.png" alt="">
+                        <img class="profile" src=<%=listaAboutUsuario.fotoPerfil %> alt="">
                             <div class="info-usuario">
                                 <h1><%=listaAboutUsuario.nombre %></h1> 
                                 <a class="follow" href="/users/editarPerfil/id/<%= listaAboutUsuario.id %>"><i class="fa-solid fa-user-gear"></i></a>
                                 <ul class="meta"> <!--cantidad postos no puede cambiar-->
-                                    <li>2 posts</li>
+                                    <li><%=listaPosteos.length %> posteos</li>
                                     <li>200 seguidores</li>
                                     <li>300 seguidos</li>
                                 </ul>
@@ -28,9 +30,14 @@
                             </div>
                     </section>
                     <section class="bottom">
-                       
+                        <% for (let j = 0; j< listaPosteos.length ; j++) { %>
+                            <article class="post">
+                                <a href="/posts/detallePost/id/<%=listaPosteos[j].id %>">
+                                    <img src="<%= listaPosteos[j].nombreImg %>" alt="">
+
                                 </a>
                             </article>
+                        <% } %>
                     </section>
                 </div>
             </main>

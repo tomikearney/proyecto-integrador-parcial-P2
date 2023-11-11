@@ -9,7 +9,14 @@ var router = express.Router();
 
 router.get("/detallePost/id/:id", postsController.detallePost);
 
+/*Mostrar el formulario para agregar un post */
 router.get("/add", postsController.agregarPost);
-m
+
+router.post("/add", postsController.storePost)
+
+
+
+/*FALTA HACER: Procesar la información recibida para editar lo que se sube, con el postController.update|destroy */
+/*Mostrar la información recibida  */
 
 module.exports = router;

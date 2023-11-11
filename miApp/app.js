@@ -4,10 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+/*Creamos variable session */
+let session = require ('express-session');
+
 /*Importamos modulos de ruteo propios */
 var indexRouter = require('./routes/index');
 var postRouter = require('./routes/posts');
 var usuarioRouter = require('./routes/users')
+
+/*Requiero los modelos de base de datos */
+const data = require('./database/models');
 
 /*Funcion de alto nivel */
 var app = express();
@@ -23,6 +29,47 @@ app.use(cookieParser());
 
 //Recursos Estaticos:  guardados en la carpeta public
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+/*Ejecuto session por arriba de rutas */
+app.use(session({
+  secret:'Secret Message',
+  resave:false,
+  saveUninitialized:true
+}));
+
+/*Paso la informacio a vistas */
+app.use(function (req,res,next) {
+  if(req.session.user != undefined){  //user tiene todos los datos del usuario esta en indexController store
+    res.locals.user = req.session.user;
+    //locals ayuda a q se vea en view
+    return next();
+  } 
+  return next()
+}) //Asignamos un usuario a session en controller
+
+/*Configuración de Cookie */
+app.use((req,res,next)=>{
+  if (req.cookies.UserId != undefined && req.session.user == undefined) {
+    let idUsuarioCookie = req.cookies.UserId;
+
+    data.Usuario.findByPk(idUsuarioCookie)
+    .then (function (user) {
+      req.session.user = user.dataValues;
+
+      res.locals.user = user.dataValues;
+    
+      return next()
+    })
+    .catch((error)=>{
+      return console.log(error);
+    })
+  } else {
+    return next();
+  }
+});
+
+
 
 /*PREFIJOS */
 app.use('/', indexRouter);
