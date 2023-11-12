@@ -148,7 +148,17 @@ const indexController ={
           return res.send(error);
         });
 
-    }
+    }, logout : function (req, res) {
+        // Destruir la sesión actual
+        req.session.destroy((error) => {
+            if (error) {
+               return res.send("error al cerrar la secion ")
+            }
+    
+            // Redirigir a la página de inicio u otra página después del logout
+            res.redirect('/');
+        });
+    },
 }
 
 module.exports = indexController;

@@ -17,4 +17,6 @@ router.post('/registracion', indexController.store);
 
 router.get('/busqueda', indexController.busqueda);
 
+router.post('/logout', indexController.logout);
+
 module.exports = router;
