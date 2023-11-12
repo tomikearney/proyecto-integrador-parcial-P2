@@ -152,14 +152,3 @@ const indexController ={
 }
 
 module.exports = indexController;
-
-
-
-/*NOTAS DE LO QUE CAMBIE*/
-/*
-1. voy a ver vista de index
-
-
-
-
-*/

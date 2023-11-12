@@ -55,5 +55,3 @@ const usuariosController = {
 
 module.exports = usuariosController;
 
-/*NOTA
-1. ver sesion y cookies*/

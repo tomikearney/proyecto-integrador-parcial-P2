@@ -1,4 +1,3 @@
-
 //vinculo con datebases y models
 const data = require("../database/models");
 const posteo = data.Posteo; // Posteo es el alias del modelo
@@ -55,6 +54,3 @@ const postsController = {
 
 };
 module.exports = postsController;
-
-/*NOTA DE LOS CAMBIOS QUE HAGO:
-1. */
