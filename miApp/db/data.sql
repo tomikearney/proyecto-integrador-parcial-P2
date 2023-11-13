@@ -6,7 +6,7 @@ CREATE TABLE usuarios (
     nombre		VARCHAR(200)		UNIQUE NOT NULL,
     email 		VARCHAR (60)		UNIQUE NOT NULL,
     clave 		VARCHAR (200)		NOT NULL,
-    fotoPerfil  VARCHAR (200)		NULL, 
+    fotoPerfil  VARCHAR (1000)		NULL, 
 	fecha  		DATE 				NULL,
     dni 		INT					UNIQUE NOT NULL,
     createdAt 	TIMESTAMP 			DEFAULT CURRENT_TIMESTAMP,
@@ -17,7 +17,7 @@ CREATE TABLE usuarios (
 CREATE TABLE posteos (
 	id 					INT 				UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	idUsuario			INT					UNSIGNED,
-    nombreImg 			VARCHAR (100)		NOT NULL, 
+    nombreImg 			VARCHAR (1000)		NOT NULL, 
     descripcionImg 		TEXT				NOT NULL,
     createdAt 			TIMESTAMP 			DEFAULT CURRENT_TIMESTAMP,
 	updatedAt 			TIMESTAMP 			DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

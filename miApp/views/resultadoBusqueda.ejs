@@ -1,39 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <%- include('./partials/head') %>
+  <%- include('./partials/head') %>
 
-    <body>
-        <% if (locals.user != undefined) { %>
-            <%- include('./partials/headerLogueado') %>
-        <% } else { %>
-            <%- include('./partials/header') %>
-        <% } %>
-        
+<body>
+    <% if (locals.user!=undefined) { %>
+      <%- include('./partials/headerLogueado') %>
+  <% } else { %>
+      <%- include('./partials/header') %>
+  <% } %>
+
     <main>
 
-        <section class="center main-content">
         <h1>Resultados de búsqueda: "<%= criterio %>"</h1>
 
-        <!-- Construir la vista -->
-        <% for( let i = 0; i < dataCompleta.length; i++ ) { %>
-            <article class="post">
+        <% if (dataCompleta.length == 0) { %>
+            <h2>No hay resultados para su criterio de búsqueda</h2>
+        <% } %>
+
+        <section class="center main-content">
+            <% for( let i = 0; i < dataCompleta.length; i++ ) { %>
+              <article class="post">
                 <div class="info-usuario ">
-                  <img class= "profile" src="<%= dataCompleta[i].posteoUsuario.fotoPerfil %>" alt="<%= dataCompleta[i].posteoUsuario.nombre%>">
+                  <!--ENLACE PARA MOSTRAR PERFIL-->
+                  <img src="<%= dataCompleta[i].posteoUsuario.fotoPerfil %>" alt="<%= dataCompleta[i].posteoUsuario.nombre%>">
 
                     <h4> 
-                      <a href="/users/detalleUsuario/id/<%= dataCompleta[i].usuarioPosteo.idUsuario %>"><%= dataCompleta[i].posteoUsuario.nombre%></a>
+                      <a href="/users/detalleUsuario/id/<%= dataCompleta[i].posteoUsuario.id %>"><%= dataCompleta[i].posteoUsuario.nombre%></a>
                     </h4>
                 </div>
-                
+                <div class="post-body">
+                    <a href="posts/detallePost/id/<%=dataCompleta[i].id%>">
+                        <img class="photo" src="<%= dataCompleta[i].nombreImg %>" alt="Posteo">
 
+                    <!--HAY QUE MODIFICAR LA RUTA DE CADA UNO DEL NOMBRE IMG O AGREGAR UNO QUE TENGA LA URL PORQUE SINO NO MUESTRA LA PUBLICACION-->
+                    </a>
+                </div>
+                <ul class="post-reacciones">
+                    <li>
+                        <i class="fa-regular fa-heart"></i>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-comment"></i>
+                    </li>
+                </ul>
+                <div class="post-comentarios">
+                  <!--Descripcion del post-->
+                  <p><%= dataCompleta[i].posteoUsuario.nombre %> <%= dataCompleta[i].descripcionImg %></p>
+
+                   <h4>Comentarios</h4>
+                    <ul>
+                      <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos. Solo se muestra 2 comentarios -->
+                    <% for( let index = 0; index < dataCompleta[i].posteoComentario.length; index++ ) { %>
+                        <li><a href="/users/detalleUsuario/id/<%= dataCompleta[i].posteoComentario[index].comentarioUsuario.id %>"><%= dataCompleta[i].posteoComentario[index].comentarioUsuario.nombre %></a> 
+                            <span><%= dataCompleta[i].posteoUsuario.usuarioComentario[index].comentario %></span>
+                        </li>
+                      <% } %>
+                      <a class ="postVerMas" href="/posts/detallePost/id/<%=dataCompleta[i].id%>">Ver más...</a> 
+                    </ul>
+                </div>
             </article>
-
             <% } %>
-
-        </section>
+          
+           
+        </section>    
     </main>
+
     <%- include('./partials/footer') %>
+
+
 </body>
 
 </html>

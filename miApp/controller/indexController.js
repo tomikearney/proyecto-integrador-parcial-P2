@@ -8,21 +8,19 @@ const indexController ={
     index :function(req, res, next) {
         // let id = req.params.id;
 
-        let relaciones = {
+
+        let filtro = {
+            //****ACA VA EL ORDER, LIMIT,WHERE***
+            order : [['createdAt', 'DESC']],
             include: { 
                 all: true, 
                 nested: true
             }
-        }; 
-
-        let filtro = {
-            //****ACA VA EL ORDER, LIMIT,WHERE***
-            order : ['createdAt', 'DESC']
         }
 
-        posteo.findAll(relaciones, filtro) 
+        posteo.findAll(filtro) 
         .then((result) => {
-            res.render('index', { dataCompleta: result, usuarioLogueado: true }); /*mando toda la informacion y luego ingresamos con a posicion desde vista */
+            res.render('index', { dataCompleta: result }); /*mando toda la informacion y luego ingresamos con a posicion desde vista */
 
         })
         .catch((error) => {
@@ -33,7 +31,12 @@ const indexController ={
 
 
     login: function (req, res) {
-        res.render('login', { usuarioLogueado: false });
+
+        if (req.session.user != undefined) {
+            res.redirect("/")
+        } else {
+            res.render('login');
+        }
     },
 
     loginPost: (req,res,next) => {
@@ -110,11 +113,10 @@ const indexController ={
 
     registro: function (req, res,next) {
 
-        //CHEQUEAR SI ESTÁ BIEN
         if (req.session.user != undefined) {
             res.redirect("/")
         } else {
-            res.render('registracion', {usuarioLogueado: false });
+            res.render('registracion');
         }
     },
 
@@ -125,11 +127,29 @@ const indexController ={
         /*Validamos lo que se ingresa */
         let errors ={};
 
+        let criterio ={
+            where: [{
+                email: info.email
+            }]
+        };
+
+        usuario.findOne (criterio)
+        .then((result) =>{
+            if (result != null){
+                errors.message = "El campo email se encuentra repetido";
+                res.locals.errors = errors;
+                res.render('registracion');
+            }
+        })
+        .catch((error)=>{
+            return console.log(error);
+        });
+        
         if (info.email == "") {
             errors.message = "El campo email esta vacío";
             res.locals.errors = errors;
             return res.render("registracion");
-
+        
         } else if(info.clave == ""){
             errors.message = "El campo contraseña esta vacío";
             res.locals.errors = errors;
@@ -144,21 +164,13 @@ const indexController ={
             errors.message = "¡Ups! El campo nombre se encuentra vacío";
             res.locals.errors = errors;
             return res.render("registracion");
-        } else if(info.fotoPerfil == ""){
-            errors.message = "¡Ups! El campo fotoPerfil se encuentra vacío";
-            res.locals.errors = errors;
-            return res.render("registracion");
-        } else if(info.fecha == ""){
-            errors.message = "¡Ups! El campo fecha se encuentra vacío";
-            res.locals.errors = errors;
-            return res.render("registracion");
 
-        } else if(info.dni == ""){
+        }  else if(info.dni == ""){
             errors.message = "¡Ups! El campo de tu DNI esta vacío";
             res.locals.errors = errors;
             return res.render("registracion");
 
-        }else{
+        } else{
             let user = { 
                 //Se crea un objeto user que contiene los datos del usuario que se va a registrar. 
                 nombre : info.nombre,
@@ -175,13 +187,9 @@ const indexController ={
             .then((result) => {
                 return res.redirect("/login");
             }).catch((error) => {
-                let errors = {}; /*PREGUNTAR */
+                console.log (error);
 
-                // console.log (error);
-
-                errors.message = "El campo email se encuentra repetido";
-                res.locals.errors = errors;
-                res.render('registracion', { usuarioLogueado: false });
+                
             });
     
         }       
@@ -196,23 +204,26 @@ const indexController ={
         // return res.send("el dato que buscas es " + busqueda)
 
         let filtro = {
+            //****ACA VA EL ORDER, LIMIT,WHERE***
             where: [
-                {nombre: {[op.like]: `%${busqueda}%`}}
+                {descripcionImg: {[op.like]: `%${busqueda}%`}}
             ],
-
-            // include :[ {association:"usuarioPosteo"},
-            // {association:"usuarioComentario"}]
+            order : [['createdAt', 'DESC']],
+            limit: 10,
             include: { 
                 all: true, 
                 nested: true
-            },
+            }
+        }
             
-        };
+            
+            
+        
 
-        usuario.findAll(filtro) 
+        posteo.findAll(filtro) 
         .then((results) => {
-            // return res.send(results)
-            res.render('resultadoBusqueda', { dataCompleta: results, criterio:busqueda, usuarioLogueado: true});
+            //return res.send(results)
+            res.render('resultadoBusqueda', { dataCompleta: results, criterio:busqueda});
         })
         .catch((error) => {
           return res.render("error");
