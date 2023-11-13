@@ -13,9 +13,14 @@ const indexController ={
                 all: true, 
                 nested: true
             }
-        }; // TRAE TODAS LAS RELACIONES TODAS LAS ASOCIACIONES
+        }; 
 
-        posteo.findAll(relaciones) 
+        let filtro = {
+            //****ACA VA EL ORDER, LIMIT,WHERE***
+            order : ['createdAt', 'DESC']
+        }
+
+        posteo.findAll(relaciones, filtro) 
         .then((result) => {
             res.render('index', { dataCompleta: result, usuarioLogueado: true }); /*mando toda la informacion y luego ingresamos con a posicion desde vista */
 
@@ -30,46 +35,47 @@ const indexController ={
     login: function (req, res) {
         res.render('login', { usuarioLogueado: false });
     },
+
     loginPost: (req,res,next) => {
 
         let emailBuscado = req.body.email;
-        let pass = req.body.clave;
+        let clave = req.body.clave;
         let rememberMe= req.body.rememberMe;
-        let criterio ={
-            where: [{
-                email:emailBuscado
-            }]
-        };
-
+       
         // console.log(req.body)
         // console.log(rememberMe != undefined);
         /*Validación de formularios*/
 
-        let errors = {}
+        let errors = {};
 
         if (emailBuscado == "") {
             errors.message = "El campo email está vacío"
-            res.locals.errors = errors //A propiedad(la llamamos errors) le asignamos obj literal errors
+            res.locals.errors = errors; //A propiedad(la llamamos errors) le asignamos obj literal errors
             return res.render("login")
-        }
-        else if (pass == "") {
+        }else if (clave == "") {
             errors.message = "El campo clave está vacío"
             res.locals.errors = errors //A propiedad(la llamamos errors) le asignamos obj literal errors
             return res.render("login")
-        }
-        else {
+        } else {
+
+            let criterio ={
+                where: [{
+                    email:emailBuscado
+                }]
+            };
+    
             usuario.findOne (criterio)
             .then((result) =>{
                 if (result != null){
-                    let check = bcrypt.compareSync(pass,result.clave)
+                    let check = bcrypt.compareSync(clave,result.clave)
                     //me da un booleano y se peude usar un condicional
                     if (check) { 
                         // esto es si exite la contraseña y el mail, entonces se configura para que guarde los datos en el momento que se pone recordame --> cookie
                         req.session.user = result.dataValues;
                         if(rememberMe != undefined){
-                            res.cookie("UserId"/*nombre de cookie en app.js */,result.id /*valor de la cookie*/,{maxAge:1000*60*5})
+                            res.cookie("UserId",result.id,{maxAge:1000*60*5})
                         }
-                        return res.redirect ("/")
+                        return res.redirect ("/posts/add")
                     } else {
                         res.render('login', { usuarioLogueado: false });
                     }
@@ -79,12 +85,27 @@ const indexController ={
             })
             .catch((error)=>{
                 return console.log(error);
-            })
+            });
         }
-
         
+    },
+    //simplemente borramos todo lo que esta en session, es decir al usuario.
+    logout : function (req, res) {
+        req.session.user = undefined;
+        res.locals.user = undefined;
+        res.clearCookie ('userId')
+        return res.render ('login')
 
+        // logout : function (req, res) {
+        //     // Destruir la sesión actual
+        //     req.session.destroy((error) => {
+        //         if (error) {
+        //            return res.send("error al cerrar la secion ")
+        //         }
         
+        //         // Redirigir a la página de inicio u otra página después del logout
+        //         res.redirect('/');
+        //     });
     },
 
     registro: function (req, res,next) {
@@ -96,31 +117,72 @@ const indexController ={
             res.render('registracion', {usuarioLogueado: false });
         }
     },
+
     store:function (req,res,next) {
 
         let info = req.body;
-        let user = { 
-            //Se crea un objeto user que contiene los datos del usuario que se va a registrar. 
-            nombre : info.nombre,
-            email : info.email,
-            clave : bcrypt.hashSync(info.clave,10),
-            fotoPerfil : info.fotoPerfil,
-            fecha : info.fecha,
-            dni : Number(info.dni),
-            // remember_token:"false"
 
-        };
+        /*Validamos lo que se ingresa */
+        let errors =[];
 
-        
+        if (info.email == "") {
+            errors.message = "El campo email esta vacío";
+            res.locals.errors = errors;
+            return res.render("registracion");
 
-        // res.send(user)
-        usuario.create(user)
-        .then((result) => {
-            return res.redirect("/login");
-        }).catch((error) => {
-            return res.send(error)
-        });
+        } else if(info.clave == ""){
+            errors.message = "El campo contraseña esta vacío";
+            res.locals.errors = errors;
+            return res.render("registracion");
 
+        } else if(info.clave.length <= 3){ /*PREGUNTAR!! */
+            errors.message = "¡Ups! El campo contraseña debe contener más de tres caracteres";
+            res.locals.errors = errors;
+            return res.render("registracion");
+
+        } else if(info.nombre == ""){
+            errors.message = "¡Ups! El campo nombre se encuentra vacío";
+            res.locals.errors = errors;
+            return res.render("registracion");
+        } else if(info.fotoPerfil == ""){
+            errors.message = "¡Ups! El campo fotoPerfil se encuentra vacío";
+            res.locals.errors = errors;
+            return res.render("registracion");
+        } else if(info.fecha == ""){
+            errors.message = "¡Ups! El campo fecha se encuentra vacío";
+            res.locals.errors = errors;
+            return res.render("registracion");
+
+        } else if(info.dni == ""){
+            errors.message = "¡Ups! El campo de tu DNI esta vacío";
+            res.locals.errors = errors;
+            return res.render("registracion");
+
+        }else{
+            let user = { 
+                //Se crea un objeto user que contiene los datos del usuario que se va a registrar. 
+                nombre : info.nombre,
+                email : info.email,
+                clave : bcrypt.hashSync(info.clave,10),
+                fotoPerfil : info.fotoPerfil,
+                fecha : info.fecha,
+                dni : Number(info.dni),
+                // remember_token:"false" PREGUNTAR
+    
+            };
+            // res.send(user)
+            usuario.create(user)
+            .then((result) => {
+                return res.redirect("/login");
+            }).catch((error) => {
+                let errors = {};
+                console.log (error);
+                errors.message = "El campo email se encuentra repetido";
+                res.locals.errors = errors;
+                return res.redirect("registracion")
+            });
+    
+        }       
     },
     //TERMINAR DE VER BUSQUEDA
     busqueda: function (req, res) {
@@ -140,25 +202,20 @@ const indexController ={
         };
 
         usuario.findAll(filtro) 
-        .then((result) => {
+        .then((results) => {
             // res.send (result)
-            res.render('resultadoBusqueda', { listaUsuarios: result.usuarioPosteo, listaPosteos:result, usuarioLogueado: true});
+            res.render('resultadoBusqueda', { listaUsuarios: results, criterio:busqueda, usuarioLogueado: true});
         })
         .catch((error) => {
           return res.send(error);
         });
+    }, 
 
-    }, logout : function (req, res) {
-        // Destruir la sesión actual
-        req.session.destroy((error) => {
-            if (error) {
-               return res.send("error al cerrar la secion ")
-            }
-    
-            // Redirigir a la página de inicio u otra página después del logout
-            res.redirect('/');
-        });
-    },
 }
 
 module.exports = indexController;
+
+/*Nuevos
+1. Hice la validación de formulacion
+2. Logout --> simplemente le puse que borre todo lo que esta en session con undefined
+ */

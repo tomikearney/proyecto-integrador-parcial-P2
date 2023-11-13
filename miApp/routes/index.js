@@ -9,6 +9,8 @@ router.get('/login', indexController.login);
 /*Procesar los datos recibidos de login */
 router.post('/login', indexController.loginPost);
 
+router.get('/logout', indexController.logout);
+
 /*Mostrar el formulario de registracion */
 router.get('/registracion', indexController.registro);
 
@@ -17,6 +19,5 @@ router.post('/registracion', indexController.store);
 
 router.get('/busqueda', indexController.busqueda);
 
-router.post('/logout', indexController.logout);
 
 module.exports = router;

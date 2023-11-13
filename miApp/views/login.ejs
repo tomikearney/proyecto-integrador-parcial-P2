@@ -4,25 +4,29 @@
     <%- include('./partials/head') %>
 
 <body>
-    <% if (locals.user != undefined) { %>
+    <% if (locals.user!=undefined ) { %>
         <%- include('./partials/headerLogueado') %>
     <% } else { %>
         <%- include('./partials/header') %>
     <% } %>
+
     <main>
         <section class="center main-content">
         <h1 >Login</h1>
-
         <form class="form" action="/login" method="post">
             
-            <label for="email" > Email: </label> <input id = "email" type="email" name="email" value="" required placeholder="Ingrese su email" >
 
-            <label for="clave" > Clave: </label> <input id = "clave" type = "password" name = "clave" value= "" required placeholder="Clave"> 
-
+            
+            <label for="email" > Email: </label> <input id = "email" type="email" name="email" value="" placeholder="Ingrese su email" >
+            <!--Probar con email: pepito@gmail.com|sab@gmail.com-->
+            <label for="clave" > Clave: </label> <input id = "clave" type = "password" name = "clave" value= "" placeholder="Clave"> 
+            <!--Probar con clave: 12345 |sabrina-->
+            
             <% if (locals.errors) { %> <!--Muestra si hay un error de validación-->
-                <p style = "color: red"><%= locals.errors.message %></p>
-            <% } %>
 
+                <p class="msjError"><%= locals.errors.message %></p>
+            <% } %>
+            
             <div>
                 <label for="rememberMe">Recuerdame</label>
                 <input type="checkbox" name="rememberMe" id="rememberMe">

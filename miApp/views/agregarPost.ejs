@@ -6,7 +6,7 @@
 <body>
     
     <!--luego de modificar session y cookies cambiar con ej: local.user != undefined -->
-    <% if (usuarioLogueado) { %>
+    <% if (locals.user != undefined) { %>
         <%- include('./partials/headerLogueado') %>
     <% } else { %>
         <%- include('./partials/header') %>
@@ -14,7 +14,7 @@
 
     <main>
         <section class="center main-content">
-        <h1>Nuevo Post</h1>
+        <h1> Agregue un Nuevo Post</h1>
 
         <form class="form" action="/posts/add" method="POST">
             <label for="nombreImg">URL: </label> <input id="nombreImg" type="text" name="nombreImg" value="" required placeholder="Ingrese la ruta absoluta">

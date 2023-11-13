@@ -1,6 +1,7 @@
 //vinculo con datebases y models
 const data = require("../database/models");
 const posteo = data.Posteo; // Posteo es el alias del modelo
+const usuarios = data.Usuario;
 const op = data.Sequelize.Op //me traigo operadores que estan en modelos index
 
 const postsController = {
@@ -54,3 +55,4 @@ const postsController = {
 
 };
 module.exports = postsController;
+

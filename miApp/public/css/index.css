@@ -287,6 +287,14 @@ input{
     color: #fff;
 }
 
+.msjError{
+    color: red;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
 /* User detail */
 
 .user-detail{
@@ -349,3 +357,4 @@ input{
     justify-content: space-between;
     width: 100%;
 }
+
