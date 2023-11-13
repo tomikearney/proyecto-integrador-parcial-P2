@@ -16,17 +16,17 @@
             <% if (locals.errors) { %>
                 <p class="msjError"><%= locals.errors.message %></p>
             <% } %>
-            <label for="nombre">Nombre:</label><input id="nombre" type="text" name="nombre" value="" placeholder="Ingrese su nombre">
+            <label for="nombre">Nombre:</label><input id="nombre" type="text" name="nombre" value="" placeholder="Ingrese su nombre" required>
 
-            <label for="email">Email:</label><input id="email" type="email" name="email" value=""  placeholder="Ingrese su email">
+            <label for="email">Email:</label><input id="email" type="email" name="email" value=""  placeholder="Ingrese su email" required>
 
-            <label for="clave">Clave:</label><input id= "clave" type="password" name="clave" value=""  placeholder="Ingrese su clave">
+            <label for="clave">Clave:</label><input id= "clave" type="password" name="clave" value=""  placeholder="Ingrese su clave" required>
 
-            <label for="fotoPerfil">Foto de perfil:</label><input id="fotoPerfil" type="text" name="fotoPerfil" value="" placeholder="Suba su foto de perfil">
+            <label for="fotoPerfil">Foto de perfil:</label><input id="fotoPerfil" type="text" name="fotoPerfil" value="" placeholder="Suba su foto de perfil"required>
 
-            <label for="fecha">Fecha de nacimiento:</label><input id="fecha" type="date" name="fecha" value="" placeholder="Ingrese su fecha de cumpleaños">
+            <label for="fecha">Fecha de nacimiento:</label><input id="fecha" type="date" name="fecha" value="" placeholder="Ingrese su fecha de cumpleaños" required>
 
-            <label for="dni">DNI:</label><input id="dni" type="number" name="dni" value=""  placeholder="Ingrese su DNI">
+            <label for="dni">DNI:</label><input id="dni" type="number" name="dni" value=""  placeholder="Ingrese su DNI" required>
             
             <button type="submit">Enviar</button>
         </form>

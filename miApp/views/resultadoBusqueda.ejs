@@ -11,51 +11,26 @@
         <% } %>
         
     <main>
-<!--MODIFICAR ESTO: CUANDO SE BUSQUE ALGO EN BUSQUEDA SE DEBE VER LOS RESULTADOS RELACIONADOS-->
+
         <section class="center main-content">
-        <h1>Resultados de búsqueda</h1>
+        <h1>Resultados de búsqueda: "<%= criterio %>"</h1>
+
         <!-- Construir la vista -->
-        <% for( let i = 0; i < listaPosteos.length; i++ ) { %>
+        <% for( let i = 0; i < dataCompleta.length; i++ ) { %>
             <article class="post">
                 <div class="info-usuario ">
-                  <img class= "profile" src="<%= listaPosteos[i].fotoPerfil %>" alt="<%= listaPosteos[i].nombreUsuarioPost%>">
+                  <img class= "profile" src="<%= dataCompleta[i].posteoUsuario.fotoPerfil %>" alt="<%= dataCompleta[i].posteoUsuario.nombre%>">
 
                     <h4> 
-                      <a href="/users/detalleUsuario/id/<%= listaPosteos[i].idUsuario %>"><%= listaPosteos[i].nombreUsuarioPost%></a>
+                      <a href="/users/detalleUsuario/id/<%= dataCompleta[i].usuarioPosteo.idUsuario %>"><%= dataCompleta[i].posteoUsuario.nombre%></a>
                     </h4>
                 </div>
-                <div class="post-body">
-                    <a href="posts/detallePost/id/<%=listaPosteos[i].id%>">
-                        <img class="photo" src="<%= listaPosteos[i].urlImg %>" alt="">
-                    </a>
-                </div>
-                <ul class="post-reacciones">
-                    <li>
-                        <i class="fa-regular fa-heart"></i>
-                    </li>
-                    <li>
-                        <i class="fa-regular fa-comment"></i>
-                    </li>
-                </ul>
-                <div class="post-comentarios">
-                  <!--Descripcion del post-->
-                  <p><%= listaPosteos[i].nombreUsuario %> <%= listaPosteos[i].descripcionImg %></p>
+                
 
-                   <h4>Comentarios</h4>
-                    <ul>
-                      <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos. Solo se muestra 2 comentarios -->
-                    <% for( let index = 0; index < 2; index++ ) { %>
-                        <li><a href="/users/detalleUsuario/id/<%= listaPosteos[i].comentarios[index].idUsuario %>"><%= listaPosteos[i].comentarios[index].nombre %></a> 
-                            <span><%= listaPosteos[i].comentarios[index].comentario %></span>
-                        </li>
-                      <% } %>
-                      <a href="/posts/detallePost/id/<%=listaPosteos[i].id%>">Ver más...</a> 
-                    </ul>
-                </div>
             </article>
-        <% } %>
 
-        <!--vamos a tener que hacer un for-->
+            <% } %>
+
         </section>
     </main>
     <%- include('./partials/footer') %>

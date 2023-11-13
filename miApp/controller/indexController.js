@@ -93,7 +93,7 @@ const indexController ={
     logout : function (req, res) {
         req.session.user = undefined;
         res.locals.user = undefined;
-        res.clearCookie ('userId')
+        res.clearCookie ('UserId')
         return res.render ('login')
 
         // logout : function (req, res) {
@@ -123,7 +123,7 @@ const indexController ={
         let info = req.body;
 
         /*Validamos lo que se ingresa */
-        let errors =[];
+        let errors ={};
 
         if (info.email == "") {
             errors.message = "El campo email esta vacío";
@@ -135,7 +135,7 @@ const indexController ={
             res.locals.errors = errors;
             return res.render("registracion");
 
-        } else if(info.clave.length <= 3){ /*PREGUNTAR!! */
+        } else if(info.clave.length < 3){ 
             errors.message = "¡Ups! El campo contraseña debe contener más de tres caracteres";
             res.locals.errors = errors;
             return res.render("registracion");
@@ -175,39 +175,47 @@ const indexController ={
             .then((result) => {
                 return res.redirect("/login");
             }).catch((error) => {
-                let errors = {};
-                console.log (error);
+                let errors = {}; /*PREGUNTAR */
+
+                // console.log (error);
+
                 errors.message = "El campo email se encuentra repetido";
                 res.locals.errors = errors;
-                return res.redirect("registracion")
+                res.render('registracion', { usuarioLogueado: false });
             });
     
         }       
     },
     //TERMINAR DE VER BUSQUEDA
     busqueda: function (req, res) {
+        //capturo la qs
         let busqueda = req.query.searchUsuario; 
         
-        // console.log(busqueda);
+        //http://localhost:3000/busqueda?searchUsuario=oriana
+
+        // return res.send("el dato que buscas es " + busqueda)
 
         let filtro = {
             where: [
                 {nombre: {[op.like]: `%${busqueda}%`}}
             ],
 
-            include :[ {association:"usuarioPosteo"},
-            {association:"usuarioComentario"}
-        ]
+            // include :[ {association:"usuarioPosteo"},
+            // {association:"usuarioComentario"}]
+            include: { 
+                all: true, 
+                nested: true
+            },
             
         };
 
         usuario.findAll(filtro) 
         .then((results) => {
-            // res.send (result)
-            res.render('resultadoBusqueda', { listaUsuarios: results, criterio:busqueda, usuarioLogueado: true});
+            // return res.send(results)
+            res.render('resultadoBusqueda', { dataCompleta: results, criterio:busqueda, usuarioLogueado: true});
         })
         .catch((error) => {
-          return res.send(error);
+          return res.render("error");
         });
     }, 
 
