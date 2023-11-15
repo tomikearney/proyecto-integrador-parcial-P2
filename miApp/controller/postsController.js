@@ -51,7 +51,28 @@ const postsController = {
 
 
 
+  }, showPost : function(req,res){ 
+  let idPosteo = req.params.id ; 
+  posteo.findByPk(idPosteo).then((result)=>{
+    return res.render("editarPost", {posteo : result})
+  }).catch((error)=>{
+     return console.log (error);
+  })
+      
+  }, updatePost : function (req,res){
+    let id = req.params.id ; 
+    let info = req.body ;
+    let criterio = {
+      where : [{id : id}]
+     }
+    posteo.update(info,criterio).then((result)=>{
+      return res.redirect("/users/miPerfil/id/" + id)
+    }).catch((error)=> {
+      return console.log(error);
+    }) 
+
   }
+
 
 };
 module.exports = postsController;

@@ -13,8 +13,11 @@ router.get("/detallePost/id/:id", postsController.detallePost);
 router.get("/add", postsController.agregarPost);
 
 router.post("/add", postsController.storePost)
+// editar posteos 
+router.get("/editarPost/id/:id",postsController.showPost )
+router.post("/editarPost/id/:id",postsController.updatePost )
 
-
+//router.get("/deletePost/id/:id", postsController.deletePost)
 
 /*FALTA HACER: Procesar la información recibida para editar lo que se sube, con el postController.update|destroy */
 /*Mostrar la información recibida  */
