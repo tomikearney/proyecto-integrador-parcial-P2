@@ -53,7 +53,7 @@
                       <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos. Solo se muestra 2 comentarios -->
                     <% for( let index = 0; index < dataCompleta[i].posteoComentario.length; index++ ) { %>
                         <li><a href="/users/detalleUsuario/id/<%= dataCompleta[i].posteoComentario[index].comentarioUsuario.id %>"><%= dataCompleta[i].posteoComentario[index].comentarioUsuario.nombre %></a> 
-                            <span><%= dataCompleta[i].posteoUsuario.usuarioComentario[index].comentario %></span>
+                            <span><%= dataCompleta[i].posteoComentario[index].comentario %></span>
                         </li>
                       <% } %>
                       <a class ="postVerMas" href="/posts/detallePost/id/<%=dataCompleta[i].id%>">Ver más...</a> 

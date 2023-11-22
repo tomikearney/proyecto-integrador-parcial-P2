@@ -25,7 +25,11 @@ const postsController = {
   },
 
   agregarPost: function (req, res, next) {
-    res.render('agregarPost');
+    if (req.session.user != undefined) {
+      res.render('agregarPost');
+    } else {
+      res.render("login")
+    }    
   },
 
   storePost: function (req, res, next) {
