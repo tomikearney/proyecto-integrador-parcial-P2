@@ -48,29 +48,70 @@ const postsController = {
 
     })
 
-  },
-   showPost : function(req,res){ 
-  let idPosteo = req.params.id ; 
-  posteo.findByPk(idPosteo)
-  .then((result)=>{
-    return res.render("editarPost", {posteo: result})
-  }).catch((error)=>{
-     return console.log (error);
-  })
+  }, showPost : function(req,res){ 
+    let idPosteo = req.params.id ; 
+    let autorPosteo = {} //Acá se va a guardar el id del usuario que publico el posteo que se quiere editar
+
+    if (req.session.user != undefined) { //Primero que nada chequeamos si el usuario está logueado
+
+      posteo.findByPk(idPosteo)
+      .then((result)=>{
+        autorPosteo.id = result.idUsuario
+        if (req.session.user.id == autorPosteo.id) { //Chequea que el usuario logueado sea el mismo del posteo que se quiere editar
+          return res.render("editarPost", {posteo: result})
+        }
+        else {
+          res.redirect('/posts/detallePost/id/' + idPosteo); 
+        }
+      }).catch((error)=>{
+        return console.log (error);
+      })
+    }
+    else {
+      res.redirect('/posts/detallePost/id/' + idPosteo); 
+    }
       
   },
    updatePost : function (req,res){
     let idPosteo = req.params.id ; 
+    let autorPosteo = {} //Acá se va a guardar el id del usuario que publico el posteo que se quiere borrar
+
     let info = req.body;
     let criterio = {
       where : [{id : idPosteo}]
      }
-    posteo.update(info, criterio)
-    .then((result)=>{
-      return res.redirect("/posts/detallePost/id/" + idPosteo)
-    }).catch((error)=> {
-      return console.log(error);
-    }) 
+
+
+     if (req.session.user != undefined) { //Primero que nada chequeamos si el usuario está logueado
+ 
+       posteo.findByPk (idPosteo)
+       .then((result) =>{
+         autorPosteo.id = result.idUsuario
+         if (req.session.user.id == autorPosteo.id) { //Chequea que el usuario logueado sea el mismo del posteo que se quiere borrar
+          posteo.update(info, criterio)
+          .then((result)=>{
+            return res.redirect("/posts/detallePost/id/" + idPosteo)
+          })
+          .catch((error)=> {
+            return console.log(error);
+          }) 
+         }
+         else {
+           res.redirect('/posts/detallePost/id/' + idPosteo); 
+         }
+         
+       })
+       .catch((error)=>{
+           return console.log(error);
+       });
+       
+     }
+     else {
+       res.redirect('/posts/detallePost/id/' + idPosteo); 
+     }
+
+    
+    
 
   }, 
   deletePost: function (req,res){
@@ -110,17 +151,7 @@ const postsController = {
     }
     
 
-    //if (req.session.user != undefined) { //Chequea que el usuario esté logueado
-    
-      
-    //} 
-
-
   },
-
-  // addComentario: function(req,res,next){
-
-  // },
 
   storeAddComentario: function(req,res){
     if (req.session.user == undefined){
@@ -142,7 +173,7 @@ const postsController = {
         return res.send(error)
       })
     }
-  }
+  },
 
 };
 module.exports = postsController;
