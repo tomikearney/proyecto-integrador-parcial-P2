@@ -25,7 +25,11 @@ const postsController = {
   },
 
   agregarPost: function (req, res, next) {
-    res.render('agregarPost');
+    if (req.session.user != undefined) {
+      res.render('agregarPost');
+    } else {
+      res.render("login")
+    }    
   },
 
   storePost: function (req, res, next) {
@@ -120,16 +124,28 @@ const postsController = {
 
     if (req.session.user != undefined) { //Primero que nada chequeamos si el usuario está logueado
 
-      let criterio = {
+      let criterioPosteo = {
         where : [{id : idPosteo}]
       };
+      let criterioComentarios = {
+        where : [{idPosteo : idPosteo}]
+      };
+      let relacion = {
+        include:{
+          all : true,
+          nested : true
+        }
+      }
 
-      posteo.findByPk (idPosteo)
+      posteo.findByPk (idPosteo, relacion)
       .then((result) =>{
         autorPosteo.id = result.idUsuario
         if (req.session.user.id == autorPosteo.id) { //Chequea que el usuario logueado sea el mismo del posteo que se quiere borrar
-          posteo.destroy(criterio)
-          .then((result)=>{
+          if (result.posteoComentario != undefined) { //Si el posteo a eliminar tiene comentarios, se eliminan estos primero(despúes se elimina el posteo en sí)
+            comentarios.destroy(criterioComentarios).then().catch((error)=> {return console.log(error);}) 
+          }
+          posteo.destroy(criterioPosteo)
+          .then(()=>{
             return res.redirect("/users/miPerfil/id/" + req.session.user.id)
           })
           .catch((error)=> {
