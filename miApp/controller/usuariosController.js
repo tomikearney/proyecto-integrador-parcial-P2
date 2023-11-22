@@ -27,10 +27,33 @@ const usuariosController = {
       
     },
     editarPerfil: function(req, res, next) {
-        res.render('editarPerfil', { usuarioLogueado: true});
-
-        
+      let id = req.parms.id;
+      let relacion = {
+        include:{
+          all:true,
+          nested: true
+        }
+      };
+      usuario.findByPk(id, relacion)
+      .then((result)=>{
+        return res.render ("editarPerfil", {data: result})
+      })
+      .catch((error) =>{
+        return console.log(error);
+      })      
     },
+    // storeEditarPerfil:function (req, res) {
+    //   let idUsuario = req.params.id;
+    //   let contraseñaForm = req.body.clave
+
+    //   usuario.findByPk(idUsuario)
+    //   .then(function (result) {
+        
+    //   })
+
+
+    // },
+
     detalleUsuario: function(req, res, next) {
       let ingresoId = req.params.id;
         // return res.send(req.params.id)

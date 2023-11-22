@@ -8,7 +8,7 @@ const usuariosController = require("../controller/usuariosController")
   router.get('/editarPerfil/id/:id', usuariosController.editarPerfil); 
   
   /*Procesar la información recibida */
-  
+  // router.post('/editarPerfil/id/:id', usuariosController.storeEditarPerfil)
   /*  /*Procesar la información recibida */
 
   router.get('/detalleUsuario/id/:id', usuariosController.detalleUsuario);
