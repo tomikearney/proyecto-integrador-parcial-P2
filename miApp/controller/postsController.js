@@ -25,7 +25,7 @@ const postsController = {
   },
 
   agregarPost: function (req, res, next) {
-    res.render('agregarPost', { usuarioLogueado: true });
+    res.render('agregarPost');
   },
 
   storePost: function (req, res, next) {
@@ -48,7 +48,8 @@ const postsController = {
 
     })
 
-  }, showPost : function(req,res){ 
+  },
+   showPost : function(req,res){ 
   let idPosteo = req.params.id ; 
   posteo.findByPk(idPosteo)
   .then((result)=>{
@@ -57,7 +58,8 @@ const postsController = {
      return console.log (error);
   })
       
-  }, updatePost : function (req,res){
+  },
+   updatePost : function (req,res){
     let idPosteo = req.params.id ; 
     let info = req.body;
     let criterio = {
@@ -115,7 +117,12 @@ const postsController = {
 
 
   },
-  addComentario: function(req,res){
+
+  // addComentario: function(req,res,next){
+
+  // },
+
+  storeAddComentario: function(req,res){
     if (req.session.user == undefined){
       return res.redirect ("/login")
     } else {
@@ -125,9 +132,9 @@ const postsController = {
         idPosteo: req.params.id,
         idUsuario: req.session.user.id,
         comentario: comentario
-
-        
-      }).then(function (result) {
+      })
+      
+      .then(function (result) {
         let idPosteo = req.params.id;
         // return res.send(idPost)
         return res.redirect('/posts/detallePost/id/'+ idPosteo)
