@@ -14,8 +14,8 @@ router.get("/add", postsController.agregarPost);
 
 router.post("/add", postsController.storePost)
 // editar posteos 
-router.get("/editarPost/id/:id",postsController.showPost )
-router.post("/editarPost/id/:id",postsController.updatePost )
+router.get("/updatePost/id/:id",postsController.showPost )
+router.post("/updatePost/id/:id",postsController.updatePost )
 
 router.get("/deletePost/id/:id", postsController.deletePost)
 

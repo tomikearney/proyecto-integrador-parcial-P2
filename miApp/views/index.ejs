@@ -41,8 +41,13 @@
                 </ul>
                 <div class="post-comentarios">
                   <!--Descripcion del post-->
-                  <p><%= dataCompleta[i].posteoUsuario.nombre %> <%= dataCompleta[i].descripcionImg %></p>
+                  <ul>
+                      <li><a href="/users/detalleUsuario/id/<%= dataCompleta[i].posteoUsuario.id %>"><%= dataCompleta[i].posteoUsuario.nombre %></a> 
+                          <span><%= dataCompleta[i].descripcionImg %></span>
+                      </li>
+                  </ul>
 
+                  
                    <h4>Comentarios</h4>
                     <ul>
                       <!-- Aquí puedes iterar y mostrar los comentarios del usuario si los tienes en tus datos. Solo se muestra 2 comentarios -->
