@@ -62,6 +62,7 @@ header {
     color: #888;
     width: 90%;
     outline-width: 0;
+    margin-bottom: 0;
 }
 .search i {
     color: #888;
@@ -75,6 +76,7 @@ header {
 }
 .menu li {
     margin: 0 8px;
+    color: white;
 }
 .menu i {
     font-size: 25px;
@@ -358,3 +360,13 @@ input{
     width: 100%;
 }
 
+.info-usuario-perfil{
+    display: flex;
+    align-items: center;
+    width: 70%;
+
+}
+
+.info-usuario-detalles{
+    justify-content: space-between;
+}

@@ -15,12 +15,25 @@
     <main>
         <div class="post-detail container">
             <section class="center main-content post">
-                <div class="info-usuario">
-                    <img class = "profile" src="<%= listaUsuarios.fotoPerfil %>" alt="Foto de perfil del usuario"> 
+                <div class="info-usuario info-usuario-detalles">
+                    <div class="info-usuario-perfil">
+                        <img class = "profile" src="<%= listaUsuarios.fotoPerfil %>" alt="Foto de perfil del usuario"> 
                     
-                    <h2>
-                        <a href="/users/detalleUsuario/id/<%= listaUsuarios.id%>"><%=listaUsuarios.nombre%></a>
-                    </h2>
+                        <h2>
+                            <a href="/users/detalleUsuario/id/<%= listaUsuarios.id%>"><%=listaUsuarios.nombre%></a>
+                        </h2>
+                    </div>
+                    <div>
+                        <% if (locals.user != undefined) { %>
+                            <% if (locals.user.id == listaUsuarios.id) { %>
+                                <form action="/posts/deletePost/id/<%= listaPosteos.id %>" class="comment-form botonBorrar" method="GET"> <!--FALTA AGREGAR ESTILO ACA-->
+                                    <button type="submit">Borrar posteo</button>
+                                </form>
+                            <% } %>
+                        <% } else { %>
+                                    
+                        <% } %> 
+                    </div>
                 </div>
                 <img class="photo" src="<%= listaPosteos.nombreImg%>" alt="Foto del posteo">
             </section>
