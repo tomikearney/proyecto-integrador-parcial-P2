@@ -76,28 +76,38 @@ const postsController = {
     let idPosteo = req.params.id ; //id del posteo
     let autorPosteo = {} //Acá se va a guardar el id del usuario que publico el posteo que se quiere borrar
 
-    let criterio = {
-      where : [{id : idPosteo}]
-     };
+    if (req.session.user != undefined) { //Primero que nada chequeamos si el usuario está logueado
 
-    posteo.findByPk (idPosteo)
-    .then((result) =>{
-      autorPosteo.id = result.idUsuario
-      if (req.session.user.id == autorPosteo.id) { //Chequea que el usuario logueado sea el mismo del posteo que se quiere borrar
-        posteo.destroy(criterio)
-        .then((result)=>{
-          return res.redirect("/users/miPerfil/id/" + req.session.user.id)
-        }).catch((error)=> {
+      let criterio = {
+        where : [{id : idPosteo}]
+      };
+
+      posteo.findByPk (idPosteo)
+      .then((result) =>{
+        autorPosteo.id = result.idUsuario
+        if (req.session.user.id == autorPosteo.id) { //Chequea que el usuario logueado sea el mismo del posteo que se quiere borrar
+          posteo.destroy(criterio)
+          .then((result)=>{
+            return res.redirect("/users/miPerfil/id/" + req.session.user.id)
+          })
+          .catch((error)=> {
+            return console.log(error);
+          }) 
+        }
+        else {
+          res.redirect('/posts/detallePost/id/' + idPosteo); 
+        }
+        
+      })
+      .catch((error)=>{
           return console.log(error);
-        }) 
-      }
-      else {
-        res.redirect('/posts/detallePost/id/' + idPosteo); 
-      }
-    })
-    .catch((error)=>{
-        return console.log(error);
-    });
+      });
+      
+    }
+    else {
+      res.redirect('/posts/detallePost/id/' + idPosteo); 
+    }
+    
 
     //if (req.session.user != undefined) { //Chequea que el usuario esté logueado
     
