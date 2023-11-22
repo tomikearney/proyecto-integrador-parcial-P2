@@ -367,6 +367,15 @@ input{
 
 }
 
+.info-usuario-iconos{
+    display: flex;
+    align-items: center;
+}
+
 .info-usuario-detalles{
     justify-content: space-between;
+}
+
+.botones-info-usuario{
+    padding: 3px 7px;
 }

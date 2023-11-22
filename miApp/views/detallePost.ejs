@@ -23,11 +23,14 @@
                             <a href="/users/detalleUsuario/id/<%= listaUsuarios.id%>"><%=listaUsuarios.nombre%></a>
                         </h2>
                     </div>
-                    <div>
+                    <div class="info-usuario-iconos">
                         <% if (locals.user != undefined) { %>
                             <% if (locals.user.id == listaUsuarios.id) { %>
-                                <form action="/posts/deletePost/id/<%= listaPosteos.id %>" class="comment-form botonBorrar" method="GET"> <!--FALTA AGREGAR ESTILO ACA-->
-                                    <button type="submit">Borrar posteo</button>
+                                <form action="/posts/deletePost/id/<%= listaPosteos.id %>" class="comment-form" method="GET"> <!--FALTA AGREGAR ESTILO ACA-->
+                                    <button type="submit"><i class="fa-solid fa-trash botones-info-usuario"></i></button>
+                                </form>
+                                <form action="/posts/updatePost/id/<%= listaPosteos.id %>" class="comment-form" method="GET"> <!--FALTA AGREGAR ESTILO ACA-->
+                                    <button type="submit"><i class="fa-solid fa-pen-to-square botones-info-usuario"></i></button>
                                 </form>
                             <% } %>
                         <% } else { %>
@@ -36,6 +39,27 @@
                     </div>
                 </div>
                 <img class="photo" src="<%= listaPosteos.nombreImg%>" alt="Foto del posteo">
+                
+                <!--Iconos like y comment-->
+                <ul class="post-reacciones">
+                    <li>
+                        <i class="fa-regular fa-heart"></i>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-comment"></i>
+                    </li>
+                </ul>
+
+                <!--Descripcion del post-->
+                <div class="post-comentarios">
+                    <!--Descripcion del post-->
+                    <ul>
+                        <li><a href="/users/detalleUsuario/id/<%= listaUsuarios.id %>"><%= listaUsuarios.nombre %></a> 
+                               <span><%= listaPosteos.descripcionImg %></span>
+                        </li>
+                    </ul>  
+                </div>
+
             </section>
 
             <section class="right">
