@@ -42,10 +42,10 @@
                 <h4>Comentarios</h4>
                 <section class="comments">
 <!--PREGUNTAR EL FORM-->
-                    <form action="" class="comment-form" method="">
-                        <input type="text" class="input" placeholder="Agregar comentario">
+                    <form action= '/posts/addComentario/id/<%= idPosteo%>' class="comment-form" method="POST" >
+                        <input type="text" class="input" placeholder="Agregar comentario" name="comentario">
                         <button type="submit">Comentar</button>
-                     </form>
+                    </form>
                      
                     <div>
                         <% for( let i=0; i < listaPosteos.posteoComentario.length; i++ ) { %>

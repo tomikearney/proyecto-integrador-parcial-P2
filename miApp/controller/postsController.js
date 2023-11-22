@@ -3,6 +3,7 @@ const data = require("../database/models");
 const posteo = data.Posteo; // Posteo es el alias del modelo
 const usuarios = data.Usuario;
 const op = data.Sequelize.Op //me traigo operadores que estan en modelos index
+let comentarios = data.Comentario;
 
 const postsController = {
   detallePost: function (req, res,next) { 
@@ -46,10 +47,6 @@ const postsController = {
       return console.log (error);
 
     })
-
-
-
-
 
   }, showPost : function(req,res){ 
   let idPosteo = req.params.id ; 
@@ -113,11 +110,29 @@ const postsController = {
     
       
     //} 
-    
 
-    
-    
 
+  },
+  addComentario: function(req,res){
+    if (req.session.user == undefined){
+      return res.redirect ("/login")
+    } else {
+      let comentario = req.body.comentario;
+      // res.send(comentario)
+      comentarios.create({
+        idPosteo: req.params.id,
+        idUsuario: req.session.user.id,
+        comentario: comentario
+
+        
+      }).then(function (result) {
+        let idPosteo = req.params.id;
+        // return res.send(idPost)
+        return res.redirect('/posts/detallePost/id/'+ idPosteo)
+      }).catch(function (error) {
+        return res.send(error)
+      })
+    }
   }
 
 };

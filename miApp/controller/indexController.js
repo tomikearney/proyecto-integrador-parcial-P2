@@ -7,8 +7,6 @@ const bcrypt = require("bcryptjs")
 const indexController ={
     index :function(req, res, next) {
         // let id = req.params.id;
-
-
         let filtro = {
             //****ACA VA EL ORDER, LIMIT,WHERE***
             order : [['createdAt', 'DESC']],
@@ -57,7 +55,7 @@ const indexController ={
             return res.render("login")
         }else if (clave == "") {
             errors.message = "El campo clave está vacío"
-            res.locals.errors = errors //A propiedad(la llamamos errors) le asignamos obj literal errors
+            res.locals.errors = errors; //A propiedad(la llamamos errors) le asignamos obj literal errors
             return res.render("login")
         } else {
 
@@ -76,14 +74,19 @@ const indexController ={
                         // esto es si exite la contraseña y el mail, entonces se configura para que guarde los datos en el momento que se pone recordame --> cookie
                         req.session.user = result.dataValues;
                         if(rememberMe != undefined){
-                            res.cookie("UserId",result.id,{maxAge:1000*60*5})
+                            res.cookie("UserId",result.id,{maxAge:2000*60*5})
                         }
                         return res.redirect ("/posts/add")
                     } else {
-                        res.render('login', { usuarioLogueado: false });
+                        errors.message = "La contraseña es incorrecta";
+                        res.locals.errors = errors;
+                        return res.render('login', { usuarioLogueado: false });
                     }
                 }else {
-                    return res.send ("No existe el mail " + emailBuscado)
+                    errors.message ="No existe el mail " + emailBuscado;
+                    res.locals.errors = errors;
+                    res.render ('login');
+                    console.log(errors)
                 }
             })
             .catch((error)=>{
@@ -214,27 +217,17 @@ const indexController ={
                 all: true, 
                 nested: true
             }
-        }
-            
-            
-            
-        
-
+        }; 
         posteo.findAll(filtro) 
         .then((results) => {
             //return res.send(results)
             res.render('resultadoBusqueda', { dataCompleta: results, criterio:busqueda});
         })
         .catch((error) => {
-          return res.render("error");
+          return res.send(error)
         });
     }, 
 
 }
 
 module.exports = indexController;
-
-/*Nuevos
-1. Hice la validación de formulacion
-2. Logout --> simplemente le puse que borre todo lo que esta en session con undefined
- */
