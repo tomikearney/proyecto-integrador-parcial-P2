@@ -4,6 +4,7 @@ const usuario = data.Usuario;
 //Estan todos los posteos
 const posteo = data.Posteo;
 const op = data.Sequelize.Op
+const bcrypt = require("bcryptjs")
 
 const usuariosController = {
     miPerfil: function (req, res) {
@@ -55,6 +56,12 @@ const usuariosController = {
       let autorPerfil = {}
 
       let info = req.body;
+      
+      if (info.clave < 3) {
+        info.clave = req.session.user.clave
+      } else {
+        info.clave = bcrypt.hashSync(info.clave,10)
+      }
 
       let criterio = {
         where : [{id:idUser}]
