@@ -12,21 +12,22 @@
     
     <main>
         <section class="center main-content">
-        <h1>Editar perfil</h1>
-        <form class="form" action="/posts/" method="POST">
+        <h1>Editar perfil <%= datos.id %></h1>
 
-            <label for="nombre">Nombre:</label><input id="nombre" type="text" name="nombre" value="" required placeholder="Ingrese su nombre">
+        <form class = "form" action="/users/editarPerfil/id/<%= datos.id%>"  method="POST">
 
-            <label for="email">Email:</label><input id="email" type="email" name="email" value="" required placeholder="Ingrese su email">
+            <label for="nombre">Nombre:</label><input id="nombre" type="text" name="nombre" value="<%= datos.nombre %>" placeholder="Ingrese su nombre" required>
 
-            <label for="clave">Clave:</label><input id= "clave" type="password" name="clave" value="" required placeholder="Ingrese su clave">
+            <label for="email">Email:</label><input id="email" type="email" name="email" value="<%= datos.email %>"  placeholder="Ingrese su email" required>
 
-            <label for="fotoPerfil">Foto de perfil:</label><input id="fotoPerfil" type="text" name="fotoPerfil" value="" placeholder="Suba su foto de perfil">
+            <label for="clave">Clave:</label><input id= "clave" type="password" name="clave" value="<%= datos.clave %>"  placeholder="Ingrese su clave" >
 
-            <label for="fecha">Fecha de nacimiento:</label><input id="fecha" type="date" name="fecha" value="" placeholder="Ingrese su fecha de cumpleaños">
+            <label for="fotoPerfil">Foto de perfil:</label><input id="fotoPerfil" type="text" name="fotoPerfil" value="<%= datos.fotoPerfil %>" placeholder="Suba su foto de perfil">
 
-            <label for="dni">DNI:</label><input id="dni" type="number" name="dni" value="" required placeholder="Ingrese su DNI">
+            <label for="fecha">Fecha de nacimiento:</label><input id="fecha" type="date" name="fecha" value="<%= datos.fecha %>" placeholder="Ingrese su fecha de cumpleaños">
 
+            <label for="dni">DNI:</label><input id="dni" type="number" name="dni" value="<%= datos.dni %>"  placeholder="Ingrese su DNI" required>
+            
             <button type="submit">Enviar</button>
         </form>
     </section>

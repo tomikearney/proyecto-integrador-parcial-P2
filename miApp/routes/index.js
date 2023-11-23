@@ -21,3 +21,4 @@ router.get('/busqueda', indexController.busqueda);
 
 
 module.exports = router;
+

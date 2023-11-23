@@ -4,13 +4,14 @@ const usuariosController = require("../controller/usuariosController")
 
   router.get("/miPerfil/id/:id", usuariosController.miPerfil); 
 
-  /*Mostrar el formulario de editar mi perfil */
+  /*Mostrar el formulario de editar  perfil */
   router.get('/editarPerfil/id/:id', usuariosController.editarPerfil); 
   
   /*Procesar la información recibida */
-  // router.post('/editarPerfil/id/:id', usuariosController.storeEditarPerfil)
-  /*  /*Procesar la información recibida */
-
+  router.post('/editarPerfil/id/:id', usuariosController.updatePerfil)
+  
+  
+  /*Procesar la información recibida */
   router.get('/detalleUsuario/id/:id', usuariosController.detalleUsuario);
   
   module.exports = router;

@@ -52,7 +52,8 @@ const postsController = {
 
     })
 
-  }, showPost : function(req,res){ 
+  },
+  showPost : function(req,res){ 
     let idPosteo = req.params.id ; 
     let autorPosteo = {} //Acá se va a guardar el id del usuario que publico el posteo que se quiere editar
 
@@ -113,9 +114,6 @@ const postsController = {
      else {
        res.redirect('/posts/detallePost/id/' + idPosteo); 
      }
-
-    
-    
 
   }, 
   deletePost: function (req,res){

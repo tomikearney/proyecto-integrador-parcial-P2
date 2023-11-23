@@ -6,7 +6,7 @@ const posteo = data.Posteo;
 const op = data.Sequelize.Op
 
 const usuariosController = {
-    miPerfil: function (req, res, next) {
+    miPerfil: function (req, res) {
         let ingresoId= req.params.id;
         // return res.send(req.params.id)
         let relacion={
@@ -26,33 +26,70 @@ const usuariosController = {
         })
       
     },
-    editarPerfil: function(req, res, next) {
-      let id = req.parms.id;
-      let relacion = {
-        include:{
-          all:true,
-          nested: true
-        }
-      };
-      usuario.findByPk(id, relacion)
-      .then((result)=>{
-        return res.render ("editarPerfil", {data: result})
-      })
-      .catch((error) =>{
-        return console.log(error);
-      })      
-    },
-    // storeEditarPerfil:function (req, res) {
-    //   let idUsuario = req.params.id;
-    //   let contraseñaForm = req.body.clave
+    editarPerfil: function(req, res) {
+      let idUser=req.params.id;
+      let autorPerfil ={};
 
-    //   usuario.findByPk(idUsuario)
-    //   .then(function (result) {
+      if (req.session.user != undefined) {
+
+        usuario.findByPk(idUser)
+        .then((result)=>{
+          autorPerfil.id = result.id;
+          // return res.send(autorPerfil.id)
+          if (req.session.user.id == autorPerfil.id){
+            return res.render("editarPerfil", {datos:result});
+          }else{
+           res.redirect("/users/detalleUsuario/id/" + idUser)
+          }
+        }).catch((error)=>{
+          return console.log(error)
+        })
+
+      } else {
         
-    //   })
+        res.redirect("/users/detalleUsuario/id/" + idUser)
+      }
+    },
+    updatePerfil: function(req,res){
+      let idUser = req.params.id;
+      let autorPerfil = {}
 
+      let info = req.body;
 
-    // },
+      let criterio = {
+        where : [{id:idUser}]
+      }
+
+      if (req.session.user != undefined){
+        
+        usuario.findByPk(idUser)
+        .then((result)=>{
+          autorPerfil.id =result.id
+          // return res.send(req.session.user.id)
+          if (req.session.user.id == autorPerfil.id) {
+
+            usuario.update(info,criterio)
+            .then((result)=>{
+              return res.redirect("/users/miPerfil/id/"+ idUser)
+            })
+            .catch((error)=>{
+              return console.log(error);
+            })
+          } else{
+            res.redirect("/users/detalleUsuario/id/" + idUser)
+
+          }
+
+        })
+        .catch ((error) =>{
+          return console.log(error);
+        });
+      }
+      else{
+        res.redirect ("/user/miPerfil/id/"+idUser);
+      }
+
+    },
 
     detalleUsuario: function(req, res, next) {
       let ingresoId = req.params.id;
@@ -73,8 +110,8 @@ const usuariosController = {
       })
 
    
-    }
-};
+    },
+}
 
 module.exports = usuariosController;
 

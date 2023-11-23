@@ -69,6 +69,7 @@ const indexController ={
             .then((result) =>{
                 if (result != null){
                     let check = bcrypt.compareSync(clave,result.clave)
+                    
                     //me da un booleano y se peude usar un condicional
                     if (check) { 
                         // esto es si exite la contraseña y el mail, entonces se configura para que guarde los datos en el momento que se pone recordame --> cookie
