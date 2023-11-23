@@ -46,8 +46,9 @@ header {
     border-bottom: 1px solid #ddd;
 }
 
-.logo{
-    font-size: 18px;
+.logo {
+    font-size: 22px;
+    margin-left: 10px;
 }
 .search {
     background-color: #f6f9ff;
@@ -84,7 +85,6 @@ header {
 
 /* Main */
 main {
-    background-color: #fbfbfd;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -378,4 +378,110 @@ input{
 
 .botones-info-usuario{
     padding: 3px 7px;
+}
+
+.login-recuerdame{
+    display: flex;
+    margin-bottom: 7px
+}
+
+/* Media Queries: mobile */
+
+@media(max-width:420px){
+
+    /* Header */
+
+    .main-header{
+        max-width: 100vw;
+    }
+
+    .main-nav{
+        padding-top: 0;
+        max-width: 100vw;
+    }
+
+    .navbar-center{
+        order: 3
+    }
+
+    .menu i {
+        font-size: 15px;
+    }
+
+    .logo {
+        font-size: 14px;
+    }
+
+    .menu li {
+        font-size: 13px;
+    }
+
+    .search i {
+        font-size: 11px;
+    }
+
+    .search {
+        display: flex;
+    }
+
+    .search input {
+        height: 11px;
+    }
+
+    /* Footer */
+
+
+    .team {
+        flex-direction: column;
+        font-size: 7px;
+    }
+
+    .main-footer{
+        padding: 9px;
+        max-width: 100vw;
+    }
+
+    /* Main */
+
+    .main-content {
+        margin-left: 0;
+        max-width: 90vw;
+    }
+
+    /* Mi perfil */
+
+    .user-detail .bottom {
+        justify-content: center;
+    }
+
+    /* Formularios */
+
+    input {
+        width: 100%;        
+    }
+
+    .button-login{
+        max-width: 100vw;
+    }
+
+    /* Index y buscador */
+
+    #media-query-principal{
+        max-width: 100vw;
+    }
+
+    h1, h2, h3, h4{
+        max-width: 95vw;
+    }
+
+    /* Detalle post */
+
+    .post-detail .main-content {
+        max-width: 100vw;
+    }
+
+    .post-detail .right {
+        width: 100%; 
+    }
+    
 }

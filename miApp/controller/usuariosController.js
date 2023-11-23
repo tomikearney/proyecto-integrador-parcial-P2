@@ -15,11 +15,10 @@ const usuariosController = {
             all:true,
             nested: true
           }
-          
+          //order: [["createdAt", "ASC"]]
         };
         usuario.findByPk(ingresoId, relacion) //usuario es la variable que tiene data.Usuario
         .then((result)=>{
-          // res.send(result)
           res.render('miPerfil', { listaAboutUsuario:result, listaPosteos:result.usuarioPosteo, usuarioLogueado: true });
         })
         .catch((error)=>{
