@@ -19,7 +19,7 @@ const usuariosController = {
         };
         usuario.findByPk(ingresoId, relacion) //usuario es la variable que tiene data.Usuario
         .then((result)=>{
-          res.render('miPerfil', { listaAboutUsuario:result, listaPosteos:result.usuarioPosteo, usuarioLogueado: true });
+          res.render('miPerfil', { listaAboutUsuario:result, listaPosteos:result.usuarioPosteo});
         })
         .catch((error)=>{
           return res.send(error)
@@ -109,7 +109,7 @@ const usuariosController = {
       usuario.findByPk(ingresoId, relacion)
       .then(function (result) {
       // res.send (result)
-        res.render('detalleUsuario', { idUsuario: ingresoId, listaAboutUsuario: result, listaPosteos:result.usuarioPosteo, usuarioLogueado: true})
+        res.render('detalleUsuario', { idUsuario: ingresoId, listaAboutUsuario: result, listaPosteos:result.usuarioPosteo})
       })
       .catch (function (error) {
         res.send(error)

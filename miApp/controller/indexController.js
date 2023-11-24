@@ -18,7 +18,7 @@ const indexController ={
 
         posteo.findAll(filtro) 
         .then((result) => {
-            res.render('index', { dataCompleta: result }); /*mando toda la informacion y luego ingresamos con a posicion desde vista */
+            return res.render('index', { dataCompleta: result }); /*mando toda la informacion y luego ingresamos con a posicion desde vista */
 
         })
         .catch((error) => {
@@ -81,7 +81,7 @@ const indexController ={
                     } else {
                         errors.message = "La contraseña es incorrecta";
                         res.locals.errors = errors;
-                        return res.render('login', { usuarioLogueado: false });
+                        return res.render('login');
                     }
                 }else {
                     errors.message ="No existe el mail " + emailBuscado;

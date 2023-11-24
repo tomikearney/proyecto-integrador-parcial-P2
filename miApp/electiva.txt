@@ -1,1 +1,11 @@
-1.
+1.Recordarme (1 Punto) -->La página de login debe contar con la posibilidad de recordar el usuario. Si el usuario está logueado dentro del sitio web y cierra el navegador (o cierra la pestaña del navegador) al volver a cargar el sitio web debe autologuearlo utilizando la información guardada en el cookie.
+
+2. Imagen de Perfin (0,5 punto) --> Agregar una foto de perfil para el usuario.
+
+3. Editar datos del Usuario (1 punto) -->Únicamente el usuario logueado que se encuentre en su perfíl (Punto 6) podrá:
+Ver el ícono de acceso al formulario de edición de sus datos.
+Acceder al formulario para editar los campos de su perfil. El formulario de edición debe contar con la seguridad suficiente para que un usuario solamente pueda editar su información.
+El formulario debe mostrar los datos originales del usuario.
+El campo para modificar la contraseña debe estar vacío para que el usuario pueda cambiarla por una nueva si lo desea
+
+4. Validación interactivas (0,5) -->En los formularios de registro y login los campos obligatorios no pueden enviarse vacíos. De haberlos a la hora de validar los datos deberá mostrarse un mensaje al usuario mediante javascript en el frontend complementando las validaciones del backend
