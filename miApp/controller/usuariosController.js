@@ -20,7 +20,7 @@ const usuariosController = {
           }
           posteo.findAll(criterio) 
           .then((result)=>{
-            res.render('miPerfil', { idUser:ingresoId,listaAboutUsuario:result, listaPosteos:result});
+            res.render('miPerfil', { idUser:ingresoId, listaPosteos:result});
           })
           .catch((error)=>{
             return res.send(error)
