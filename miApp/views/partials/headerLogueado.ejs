@@ -12,14 +12,14 @@
         <div class="navbar-right">
             <ul class="menu">
                 <!--********PONERLE ESTILO ***********-->
-                <li><%= locals.user.nombre %></li>
+                <!--mostrar datos del usuario logueado-->
+                <li><a class="colorHeader" href="/users/miPerfil/id/<%= locals.user.id %>"><i class="fa-regular fa-user"></i></a></li>
+                
+                <li class="session-user">Yo, <%= locals.user.nombre %>!</li>
 
                 <li><a class="colorHeader" href="/"><i class="fa-solid fa-house"></i></a></li>
 
                 <li><a class="colorHeader" href="/posts/add"><i class="fa-regular fa-square-plus"></i></a></li>
-
-                <!--mostrar datos del usuario logueado-->
-                <li><a class="colorHeader" href="/users/miPerfil/id/<%= locals.user.id %>"><i class="fa-regular fa-user"></i></a></li>
 
                 <!--Cuando se presiona acá se borra al usuario en session PREGUNTAR-->
                 <li><a class="colorHeader" href="/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>

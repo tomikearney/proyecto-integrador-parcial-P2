@@ -6,26 +6,25 @@
     <body>
         <% if (locals.user != undefined) { %>
             <%- include('./partials/headerLogueado') %>
-        <% } else { %>
-            <%- include('./partials/header') %>
-        <% } %>
-
-<!--FALTA VER ESTO--> 
-<!-- res.render('miPerfil', { listaAboutUsuario:result, listaPosteos:result.usuarioPosteo, usuarioLogueado: true });-->
-           <main>
+            <main>
                 <div class="user-detail container">
                     <section class="top main-content">
-                        <img class="profile" src=<%=listaAboutUsuario.fotoPerfil %> alt="">
+                        <img class="profile" 
+                        src=<%=locals.user.fotoPerfil %> alt="Foto de perfil"> <!--listaAboutUsuario-->
                             <div class="info-usuario">
-                                <h1><%=listaAboutUsuario.nombre %></h1> 
-                                <a class="follow" href="/users/editarPerfil/id/<%= listaAboutUsuario.id %>"><i class="fa-solid fa-user-gear"></i></a>
+                                <h1><%=user.nombre %></h1> <!--listaAboutUsuario-->
+
+                                <% if (locals.user !=undefined && idUser == user.id) { %>
+                                    <a class="follow" href="/users/editarPerfil/id/<%= user.id %>"><i class="fa-solid fa-user-gear"></i></a>
+                                <% } %>
+                                
                                 <ul class="meta"> <!--cantidad postos no puede cambiar-->
                                     <li><%=listaPosteos.length %> posteos</li>
                                     <li>200 seguidores</li>
                                     <li>300 seguidos</li>
                                 </ul>
-                                <p>Email: <%=  listaAboutUsuario.email %> </p>
-                                <p>DNI: <%= listaAboutUsuario.dni %> </p>
+                                <p>Email: <%=  user.email %> </p>
+                                <p>DNI: <%= user.dni %> </p>
 
                             </div>
                     </section>
@@ -41,8 +40,12 @@
                     </section>
                 </div>
             </main>
-
             <%- include('./partials/footer') %>
+
+        <% } else { %>
+            <%- include('./partials/header') %>
+        <% } %>
+
     </body>
 
 </html>

@@ -3,27 +3,36 @@ const data = require("../database/models");
 const usuario = data.Usuario;
 //Estan todos los posteos
 const posteo = data.Posteo;
-const op = data.Sequelize.Op
 const bcrypt = require("bcryptjs")
 
 const usuariosController = {
     miPerfil: function (req, res) {
-        let ingresoId= req.params.id;
-        // return res.send(req.params.id)
-        let relacion={
-          include:{
-            all:true,
-            nested: true
+        if(res.locals.user != undefined){
+          let ingresoId= req.params.id;
+          let criterio ={
+            order:[['createdAt', 'DESC']],         // ?order: [["createdAt", "ASC"]]
+
+            where:[{idUsuario:ingresoId}],
+            include:{
+              all:true,
+              nested: true
+            }
           }
-          //order: [["createdAt", "ASC"]]
-        };
-        usuario.findByPk(ingresoId, relacion) //usuario es la variable que tiene data.Usuario
-        .then((result)=>{
-          res.render('miPerfil', { listaAboutUsuario:result, listaPosteos:result.usuarioPosteo});
-        })
-        .catch((error)=>{
-          return res.send(error)
-        })
+          posteo.findAll(criterio) 
+          .then((result)=>{
+            res.render('miPerfil', { idUser:ingresoId,listaAboutUsuario:result, listaPosteos:result});
+          })
+          .catch((error)=>{
+            return res.send(error)
+          })
+        }else{
+          res.redirect('/login')
+        }
+        // // return res.send(req.params.id)
+        // let relacion={
+         
+        // };
+       
       
     },
     editarPerfil: function(req, res) {

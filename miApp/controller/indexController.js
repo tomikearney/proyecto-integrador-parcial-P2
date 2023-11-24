@@ -2,11 +2,10 @@ const data = require("../database/models");
 const posteo = data.Posteo; // Posteo es el alias del modelo
 const usuario = data.Usuario;
 const op = data.Sequelize.Op;
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
 
 const indexController ={
-    index :function(req, res, next) {
-        // let id = req.params.id;
+    index :function(req, res) {
         let filtro = {
             //****ACA VA EL ORDER, LIMIT,WHERE***
             order : [['createdAt', 'DESC']],
@@ -45,8 +44,8 @@ const indexController ={
        
         // console.log(req.body)
         // console.log(rememberMe != undefined);
-        /*Validación de formularios*/
 
+        /*Validación de formularios*/
         let errors = {};
 
         if (emailBuscado == "") {
@@ -102,20 +101,9 @@ const indexController ={
         res.locals.user = undefined;
         res.clearCookie ('UserId')
         return res.render ('login')
-
-        // logout : function (req, res) {
-        //     // Destruir la sesión actual
-        //     req.session.destroy((error) => {
-        //         if (error) {
-        //            return res.send("error al cerrar la secion ")
-        //         }
-        
-        //         // Redirigir a la página de inicio u otra página después del logout
-        //         res.redirect('/');
-        //     });
     },
 
-    registro: function (req, res,next) {
+    registro: function (req, res) {
 
         if (req.session.user != undefined) {
             res.redirect("/")
@@ -183,10 +171,8 @@ const indexController ={
                 fotoPerfil : info.fotoPerfil,
                 fecha : info.fecha,
                 dni : Number(info.dni),
-                // remember_token:"false" PREGUNTAR
     
             };
-            // res.send(user)
             usuario.create(user)
             .then((result) => {
                 return res.redirect("/login");
@@ -198,14 +184,11 @@ const indexController ={
     
         }       
     },
-    //TERMINAR DE VER BUSQUEDA
+    
     busqueda: function (req, res) {
         //capturo la qs
-        let busqueda = req.query.searchUsuario; 
-        
-        //http://localhost:3000/busqueda?searchUsuario=oriana
-
-        // return res.send("el dato que buscas es " + busqueda)
+        let busqueda = req.query.searchUsuario;         
+         //http://localhost:3000/busqueda?searchUsuario=oriana
 
         let filtro = {
             //****ACA VA EL ORDER, LIMIT,WHERE***

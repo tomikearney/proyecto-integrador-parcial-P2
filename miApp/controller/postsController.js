@@ -32,7 +32,7 @@ const postsController = {
     }    
   },
 
-  storePost: function (req, res, next) {
+  storePost: function (req, res) {
 
     let info = req.body;
     // return res.send(info)
@@ -183,7 +183,8 @@ const postsController = {
         let idPosteo = req.params.id;
         // return res.send(idPost)
         return res.redirect('/posts/detallePost/id/'+ idPosteo)
-      }).catch(function (error) {
+      })
+      .catch(function (error) {
         return res.send(error)
       })
     }
