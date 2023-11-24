@@ -5,6 +5,7 @@ const usuario = data.Usuario;
 const posteo = data.Posteo;
 const bcrypt = require("bcryptjs")
 
+
 const usuariosController = {
     miPerfil: function (req, res) {
         if(res.locals.user != undefined){
