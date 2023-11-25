@@ -11,7 +11,6 @@
         <%- include('./partials/header') %>
     <% } %>
 
-<!-- res.render('detallePost', { idPosteo: idPost, listaUsuarios: result.posteoUsuario, listaPosteos:result, usuarioLogueado: true})-->
     <main>
         <div class="post-detail container">
             <section class="center main-content post">
@@ -72,7 +71,8 @@
                     </form>
                      
                     <div>
-                        <% for( let i=0; i < listaPosteos.posteoComentario.length; i++ ) { %>
+                        <!--para que se itere el array de posteoComentario pero en orden inverso-->
+                        <% for( let i=listaPosteos.posteoComentario.length -1; i >=0; i-- ) { %>
                             <article class="comment">
                                 <img class= "profile" src="<%= listaPosteos.posteoComentario[i].comentarioUsuario.fotoPerfil %>" alt="<%= listaPosteos.posteoComentario[i].comentarioUsuario.nombre %>">
                                 <section class="content">

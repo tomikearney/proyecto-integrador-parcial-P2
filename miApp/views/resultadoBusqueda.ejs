@@ -12,13 +12,12 @@
 
     <main>
 
-        <h1>Resultados de búsqueda: "<%= criterio %>"</h1>
 
         <% if (dataCompleta.length == 0) { %>
             <h2>No hay resultados para su criterio de búsqueda</h2>
-        <% } %>
-
-        <section class="center main-content" id="media-query-principal">
+        <% }else{ %>
+          <h1>Resultados de búsqueda: "<%= criterio %>"</h1>
+          <section class="center main-content" id="media-query-principal">
             <% for( let i = 0; i < dataCompleta.length; i++ ) { %>
               <article class="post">
                 <div class="info-usuario ">
@@ -33,7 +32,7 @@
                     <a href="posts/detallePost/id/<%=dataCompleta[i].id%>">
                         <img class="photo" src="<%= dataCompleta[i].nombreImg %>" alt="Posteo">
 
-                    <!--HAY QUE MODIFICAR LA RUTA DE CADA UNO DEL NOMBRE IMG O AGREGAR UNO QUE TENGA LA URL PORQUE SINO NO MUESTRA LA PUBLICACION-->
+                   
                     </a>
                 </div>
                 <ul class="post-reacciones">
@@ -63,9 +62,9 @@
                 </div>
             </article>
             <% } %>
-          
            
         </section>    
+        <% } %>
     </main>
 
     <%- include('./partials/footer') %>

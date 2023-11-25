@@ -19,7 +19,6 @@ router.post("/updatePost/id/:id",postsController.updatePost )
 
 router.get("/deletePost/id/:id", postsController.deletePost);
 
-// router.get('addComentario/id/:id',postsController.addComentario )
 router.post('/addComentario/id/:id', postsController.storeAddComentario);
 
 module.exports = router;

@@ -11,7 +11,7 @@ const postsController = {
     let relacion = {
       include:{
         all : true,
-        nested : true, 
+        nested : true
       }
     };
     posteo.findByPk (idPost,relacion)
@@ -120,7 +120,6 @@ const postsController = {
     let idPosteo = req.params.id ; //id del posteo
     let autorPosteo = {} //Acá se va a guardar el id del usuario que publico el posteo que se quiere borrar
 
-
     if (req.session.user != undefined) { //Primero que nada chequeamos si el usuario está logueado
 
       let criterioPosteo = {
@@ -173,33 +172,18 @@ const postsController = {
       return res.redirect ("/login")
     } else {
       let comentario = req.body.comentario;
-      let idPosteo = req.params.id;
-      // res.send(comentario)
-     
       comentarios.create({
         idPosteo: req.params.id,
         idUsuario: req.session.user.id,
         comentario: comentario
-
-      
-      }).then(function(result) {
-       return comentarios.findAll({
-         where: { idPosteo: idPosteo },
-          order:[['createdAt', 'DESC']],        
-          
-        });
-      
       })
       
-      .then(function (comentarios) {
+      .then(function (result) {
         let idPosteo = req.params.id;
-       
         // return res.send(idPost)
         return res.redirect('/posts/detallePost/id/'+ idPosteo)
       })
       .catch(function (error) {
-        return res.send(error)
-      }).catch(function (error) {
         return res.send(error)
       })
     }

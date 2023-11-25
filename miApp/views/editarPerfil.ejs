@@ -12,7 +12,7 @@
     
     <main>
         <section class="center main-content">
-        <h1>Editar perfil <%= datos.id %></h1>
+        <h1>Editar perfil </h1>
 
         <form class = "form" action="/users/editarPerfil/id/<%= datos.id%>"  method="POST">
 
@@ -20,7 +20,7 @@
 
             <label for="email">Email:</label><input id="email" type="email" name="email" value="<%= datos.email %>"  placeholder="Ingrese su email" required>
 
-            <label for="clave">Clave:</label><input id= "clave" type="password" name="clave" value=""  placeholder="Ingrese su clave" >
+            <label for="clave">Clave:</label><input id= "clave" type="password" name="clave" value=""  placeholder="Ingrese su clave" required>
 
             <label for="fotoPerfil">Foto de perfil:</label><input id="fotoPerfil" type="text" name="fotoPerfil" value="<%= datos.fotoPerfil %>" placeholder="Suba su foto de perfil">
 
