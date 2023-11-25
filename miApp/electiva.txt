@@ -1,11 +1,23 @@
-1.Recordarme (1 Punto) -->La página de login debe contar con la posibilidad de recordar el usuario. Si el usuario está logueado dentro del sitio web y cierra el navegador (o cierra la pestaña del navegador) al volver a cargar el sitio web debe autologuearlo utilizando la información guardada en el cookie.
+1.Recordarme (1 Punto) -->Inicialmente, se crea la cookie en el controlador principal ("indexController"). Si la opción "rememberMe" es verdadera, se ejecuta el método "cookie" dando uso al objeto "response", pasando tres parámetros. En primer lugar, se establece el nombre de la cookie como "UserId". En segundo lugar, se asigna el valor de la cookie, que corresponde al ID del usuario obtenido mediante una búsqueda "findOne" con el criterio "where", comparando el correo electrónico proporcionado por el usuario con el correo electrónico del modelo. Por último, se define la duración de la cookie utilizando el parámetro "maxAge".
 
-2. Imagen de Perfin (0,5 punto) --> Agregar una foto de perfil para el usuario.
+***********************************
+ if(rememberMe != undefined){
+     res.cookie("UserId",result.id,
+     {maxAge:2000*60*5})
+ }
+************************************
+En el archivo app.js, se verifica la presencia de la cookie denominada "UserId" y la ausencia de un usuario en sesión utilizando "req.session.user". Si la cookie existe y no hay un usuario en sesión, se busca en la base de datos el usuario cuyo ID coincide con el ID almacenado en la cookie. Si se encuentra el usuario, se establece la sesión. En cambio, si hay algún error se muestra.
 
-3. Editar datos del Usuario (1 punto) -->Únicamente el usuario logueado que se encuentre en su perfíl (Punto 6) podrá:
-Ver el ícono de acceso al formulario de edición de sus datos.
-Acceder al formulario para editar los campos de su perfil. El formulario de edición debe contar con la seguridad suficiente para que un usuario solamente pueda editar su información.
-El formulario debe mostrar los datos originales del usuario.
-El campo para modificar la contraseña debe estar vacío para que el usuario pueda cambiarla por una nueva si lo desea
+2. Imagen de Perfil (0,5 punto) --> Cuando el usuario se registra se le pide que ingrese su foto de perfil obligatoriamente controlado tanto por el frontend (mediante el required en el input y mostrando un mensaje por pantalla) como en el backend (dando uso a un condicional que verifique si el campo de fotoPerfil está vacío, si lo esta, se usa la propiedad de message a errors así se guarda en locals para mostrarlo en vistas). 
 
-4. Validación interactivas (0,5) -->En los formularios de registro y login los campos obligatorios no pueden enviarse vacíos. De haberlos a la hora de validar los datos deberá mostrarse un mensaje al usuario mediante javascript en el frontend complementando las validaciones del backend
+3. Editar datos del Usuario (1 punto) --> Para llevar a cabo este punto adicional comenzamos por crear 2 rutas, una por el método GET (mostrar el formulario) y otra por el método POST (procesar los datos). Además, usamos el método UPDATE. En la vista de miPerfil se hizo un condicional que se pregunta si el usuario esta logueado o no. Si el usuario esta logueado y le corresponde editar su perfil, entonces al presionar el botón con la clase "fa-solid fa-user-gear" se dirigira a la vista donde podra editar el perfil.
+Desde el controller a la propiedad correspondiente al método GET le renderizamos los resultados obtenidos con el método findByPk para dar uso en la view "editarPerfil". Así podemos mostrar al usuario sus datos existentes hasta el momento (se da uso en el atributo value de la etiqueta inputs del formulario). Por ultimo,la propiedad correspondiente al método POST (updatePerfil) comienza requiriendo el ID del usuario cuyo perfil se actualizará y creando un objeto vacío llamado autorPerfil para almacenar información relacionada con el autor del perfil. Luego, obtiene los datos a actualizar desde el cuerpo de la solicitud.La lógica relacionada con la contraseña verifica su longitud. Si es menor a 3 caracteres, se mantiene la contraseña actual del usuario; de lo contrario, se utiliza bcrypt para hashear la nueva contraseña antes de almacenarla.A continuación, se establece un criterio de búsqueda para localizar al usuario en la base de datos según su ID.
+
+La función procede a verificar si hay un usuario en sesión. Si existe, realiza una búsqueda del usuario en la base de datos y compara su ID con el ID del usuario cuyo perfil se está intentando actualizar.
+Si los IDs coinciden, se lleva a cabo la actualización de la información del perfil en la base de datos. En caso contrario, se redirige a la página de detalle del usuario, indicando que no se permite la actualización del perfil.Si no hay un usuario en sesión, se redirige a la página de visualización del perfil actualizado, independientemente del resultado de la actualización.
+
+4. Validación interactivas (0,5) --> 
+Para gestionar la validación de campos vacíos, se ha implementado un condicional if en el controlador (por ejemplo, "indexController"). En caso de que uno o más campos estén vacíos, se agrega la propiedad "message" al objeto literal "errors", el cual forma parte del objeto "locals". Este último es accesible desde la vista, permitiendo así mostrar el mensaje de error correspondiente en caso de ser necesario. En la vista, se utiliza otro condicional if para verificar si "locals.errors" contiene un mensaje y, en tal caso, se visualiza dentro del formulario con el propósito de indicar el error específico. Este enfoque proporciona una forma efectiva de comunicar mensajes de validación al usuario en la interfaz.
+
+
+

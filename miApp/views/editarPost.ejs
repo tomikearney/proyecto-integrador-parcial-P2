@@ -5,7 +5,6 @@
 
 <body>
     
-    <!--luego de modificar session y cookies cambiar con ej: local.user != undefined -->
     <% if (locals.user != undefined) { %>
         <%- include('./partials/headerLogueado') %>
     <% } else { %>
@@ -14,7 +13,7 @@
 
     <main>
         <section class="center main-content">
-        <h1> Editar posteo <%= posteo.id %></h1>
+        <h1> Editar posteo</h1>
 
         <form class="form" action="/posts/updatePost/id/<%= posteo.id %>" method="POST">
             <label for="nombreImg">URL: </label> <input id="nombreImg" type="text" name="nombreImg" value="<%= posteo.nombreImg %>" required placeholder="Ingrese la ruta absoluta">
