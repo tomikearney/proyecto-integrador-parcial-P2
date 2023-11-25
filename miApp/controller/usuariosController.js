@@ -11,8 +11,7 @@ const usuariosController = {
         if(res.locals.user != undefined){
           let ingresoId= req.params.id;
           let criterio ={
-            order:[['createdAt', 'DESC']],         // ?order: [["createdAt", "ASC"]]
-
+            order:[['createdAt', 'DESC']],        
             where:[{idUsuario:ingresoId}],
             include:{
               all:true,

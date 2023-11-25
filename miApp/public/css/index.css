@@ -389,6 +389,40 @@ input{
     margin-bottom: 7px
 }
 
+
+/* Media Queries: tablet */
+
+@media(max-width:768px){
+
+    /* Main */
+
+    .main-content {
+        margin-left: 0;
+        min-width: 300px; 
+    }
+
+    /* Inputs */
+
+    input{
+        width: 100%;
+    }
+
+    /* Detalle post */
+
+
+    .post-detail .right {
+        width: 64%; 
+    }
+
+    .post-detail {
+        justify-content: center;
+    }
+    
+
+
+
+}
+
 /* Media Queries: mobile */
 
 @media(max-width:420px){
@@ -458,11 +492,20 @@ input{
         justify-content: center;
     }
     .profile{
-        margin-bottom: 28vw;
-         margin-left: 2vw;
+        margin-left: 2vw;
     }
-    /* align-items: flex
+
+    .profile-miPerfil{
+        margin-bottom: 23vw;
     }
+    
+    /* Perfil usuario */
+
+
+    .profile-usuarios{
+        margin-bottom: 10vw;
+    }
+
     /* Formularios */
 
     input {
